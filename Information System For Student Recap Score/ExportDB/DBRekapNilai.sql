@@ -1,0 +1,887 @@
+CREATE DATABASE  IF NOT EXISTS `myUbaya` /*!40100 DEFAULT CHARACTER SET utf8 */;
+USE `myUbaya`;
+-- MySQL dump 10.13  Distrib 5.7.9, for Win64 (x86_64)
+--
+-- Host: localhost    Database: myUbaya
+-- ------------------------------------------------------
+-- Server version	5.7.12-log
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `MhsAmbilMk`
+--
+
+DROP TABLE IF EXISTS `MhsAmbilMk`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `MhsAmbilMk` (
+  `NRP` varchar(12) COLLATE utf8_unicode_ci NOT NULL,
+  `KodeMkBuka` varchar(15) COLLATE utf8_unicode_ci NOT NULL,
+  `KP` varchar(2) COLLATE utf8_unicode_ci NOT NULL,
+  `NTS` smallint(6) NOT NULL,
+  `NAS` smallint(6) NOT NULL,
+  `NA` double(6,3) NOT NULL,
+  `KodeNisbi` varchar(2) COLLATE utf8_unicode_ci NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `MhsAmbilMk`
+--
+
+LOCK TABLES `MhsAmbilMk` WRITE;
+/*!40000 ALTER TABLE `MhsAmbilMk` DISABLE KEYS */;
+/*!40000 ALTER TABLE `MhsAmbilMk` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `baak_Nilai`
+--
+
+DROP TABLE IF EXISTS `baak_Nilai`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `baak_Nilai` (
+  `KodeNilai` char(21) COLLATE utf8_unicode_ci NOT NULL,
+  `KodeMkBuka` varchar(15) COLLATE utf8_unicode_ci NOT NULL,
+  `KP` varchar(2) COLLATE utf8_unicode_ci NOT NULL,
+  `Jenis` enum('NTS','NAS') COLLATE utf8_unicode_ci NOT NULL,
+  `WaktuBuat` date NOT NULL,
+  `WaktuValidasiDosen` date NOT NULL,
+  `WaktuValidasiAdmik` date DEFAULT NULL,
+  `DosenPembuat` char(10) COLLATE utf8_unicode_ci NOT NULL,
+  `AdmikValidator` char(10) CHARACTER SET utf8 DEFAULT NULL,
+  `Status` enum('Daftar','ValidDosen','ValidAdmik','Invalid') COLLATE utf8_unicode_ci NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  PRIMARY KEY (`KodeNilai`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `baak_Nilai`
+--
+
+LOCK TABLES `baak_Nilai` WRITE;
+/*!40000 ALTER TABLE `baak_Nilai` DISABLE KEYS */;
+INSERT INTO `baak_Nilai` VALUES ('001600A104201510AA001','1600A10420151','A','NAS','2011-10-10','2015-11-18','2016-01-24','204027','','ValidAdmik','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001600A104201510AT001','1600A10420151','A','NTS','2011-10-11','2015-09-18','2016-01-24','204027','','ValidAdmik','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001600A104201520AA001','1600A10420152','A','NAS','2016-06-11','2016-06-28','2016-06-29','204027','','ValidAdmik','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001600A104201520AT001','1600A10420152','A','NTS','2016-04-28','2016-06-25','2016-06-26','204027','','ValidAdmik','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001600A104201520BA001','1600A10420152','B','NAS','2016-06-11','2016-06-28','2016-06-29','197030','','ValidAdmik','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001600A104201520BT001','1600A10420152','B','NTS','2016-04-28','2016-06-25','2016-06-26','204027','','ValidAdmik','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001604A011201610AA001','1604A01120161','A','NAS','2016-04-28','2016-06-25',NULL,'197030',NULL,'ValidDosen','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001604A011201610AA002','1604A01120161','A','NAS','2016-11-19','2016-11-19',NULL,'197030',NULL,'ValidDosen','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001604A011201610AT001','1604A01120161','A','NTS','2016-11-19','2016-11-19',NULL,'197030',NULL,'ValidDosen','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001604A011201610BT001','1604A01120161','B','NTS','2016-11-19','2016-11-19',NULL,'197030',NULL,'ValidDosen','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001604A031201520AA001','1604A03120152','A','NAS','2016-06-11','2016-06-28','2016-06-29','197030','','ValidAdmik','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001604A031201520AT001','1604A03120152','A','NTS','2016-04-28','2016-06-25','2016-06-26','197030','','ValidAdmik','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001604A032201510-A001','1604A03220151','-','NAS','2011-10-11','2015-11-18','2016-01-24','215027','','ValidAdmik','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001604A032201510-T001','1604A03220151','-','NTS','2011-10-11','2015-09-18','2016-01-24','215027','','ValidAdmik','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001604A032201520AA001','1604A03220152','A','NAS','2016-06-11','2016-06-28','2016-06-29','209345','','ValidAdmik','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001604A032201520AT001','1604A03220152','A','NTS','2016-04-28','2016-06-25','2016-06-26','209345','','ValidAdmik','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001604A033201520AA001','1604A03320152','A','NAS','2016-06-11','2016-06-28','2016-06-29','208020','','ValidAdmik','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001604A033201520AT001','1604A03320152','A','NTS','2016-04-28','2016-06-25','2016-06-26','208020','','ValidAdmik','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001604A033201520BA001','1604A03320152','B','NAS','2016-06-11','2016-06-28','2016-06-29','208020','','ValidAdmik','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001604A033201520BT001','1604A03320152','B','NTS','2016-04-28','2016-06-25','2016-06-26','208020','','ValidAdmik','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001604A055201510AA001','1604A05520151','A','NAS','2011-10-11','2015-11-18','2016-01-24','197030','','ValidAdmik','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001604A055201510AT001','1604A05520151','A','NTS','2011-10-11','2015-09-18','2016-01-24','197030','','ValidAdmik','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001604A055201520AA001','1604A05520152','A','NAS','2016-06-11','2016-06-28','2016-06-29','204027','','ValidAdmik','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001604A055201520AT001','1604A05520152','A','NTS','2016-04-28','2016-06-25','2016-06-26','204027','','ValidAdmik','0000-00-00 00:00:00','0000-00-00 00:00:00');
+/*!40000 ALTER TABLE `baak_Nilai` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `baak_NilaiMahasiswa`
+--
+
+DROP TABLE IF EXISTS `baak_NilaiMahasiswa`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `baak_NilaiMahasiswa` (
+  `KodeNilai` char(21) COLLATE utf8_unicode_ci NOT NULL,
+  `NRP` varchar(12) COLLATE utf8_unicode_ci NOT NULL,
+  `Nilai` smallint(6) NOT NULL,
+  `KodeNisbi` varchar(2) COLLATE utf8_unicode_ci NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  KEY `baak_nilaimahasiswa_kodenilai_foreign` (`KodeNilai`),
+  CONSTRAINT `baak_nilaimahasiswa_kodenilai_foreign` FOREIGN KEY (`KodeNilai`) REFERENCES `baak_Nilai` (`KodeNilai`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `baak_NilaiMahasiswa`
+--
+
+LOCK TABLES `baak_NilaiMahasiswa` WRITE;
+/*!40000 ALTER TABLE `baak_NilaiMahasiswa` DISABLE KEYS */;
+INSERT INTO `baak_NilaiMahasiswa` VALUES ('001604A032201520AT001','6134021',73,'AB','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001604A032201520AT001','6134040',73,'AB','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001604A032201520AA001','6134021',83,'AB','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001604A032201520AA001','6134040',85,'AB','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001604A031201520AT001','6134059',100,'A','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001604A031201520AT001','6134111',100,'A','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001604A031201520AA001','6134059',100,'A','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001604A031201520AA001','6134111',90,'A','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001600A104201520AT001','6134059',77,'AB','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001600A104201520AT001','6134040',81,'AB','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001600A104201520AA001','6134059',81,'AB','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001600A104201520AA001','6134040',75,'AB','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001600A104201520BT001','6134111',80,'AB','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001600A104201520BT001','6134020',75,'AB','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001600A104201520BA001','6134111',80,'AB','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001600A104201520BA001','6134020',75,'AB','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001604A055201520AT001','6134021',90,'A','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001604A055201520AT001','6134059',70,'B','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001604A055201520AA001','6134021',70,'B','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001604A055201520AA001','6134059',70,'B','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001604A033201520AT001','6134004',80,'AB','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001604A033201520AT001','6134059',90,'A','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001604A033201520AA001','6134004',80,'AB','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001604A033201520AA001','6134059',90,'A','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001604A033201520BT001','6134108',80,'AB','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001604A033201520BT001','6134087',70,'B','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001604A033201520BA001','6134108',85,'A','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001604A033201520BA001','6134087',75,'AB','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001604A032201510-T001','6134059',90,'A','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001604A032201510-T001','6134111',80,'AB','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001604A032201510-A001','6134059',95,'A','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001604A032201510-A001','6134111',85,'A','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001600A104201510AT001','6134059',84,'A','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001600A104201510AT001','6134115',74,'AB','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001600A104201510AA001','6134059',82,'A','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001600A104201510AA001','6134115',83,'A','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001604A055201510AT001','6134111',73,'AB','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001604A055201510AT001','6134115',75,'AB','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001604A055201510AA001','6134111',75,'AB','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001604A055201510AA001','6134115',70,'B','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001604A011201610AT001','6134111',6,'E','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001604A011201610AT001','6134004',0,'E','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001604A011201610AT001','6134020',0,'E','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001604A011201610AT001','6134115',78,'AB','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001604A011201610AT001','6134059',96,'A','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001604A011201610BT001','6134040',86,'A','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001604A011201610BT001','6134108',80,'AB','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001604A011201610BT001','6134087',83,'A','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001604A011201610BT001','6134021',85,'A','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001604A011201610BT001','6134030',84,'A','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001604A011201610AA002','6134111',0,'E','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001604A011201610AA002','6134004',0,'E','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001604A011201610AA002','6134020',85,'A','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001604A011201610AA002','6134115',0,'E','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001604A011201610AA002','6134059',90,'A','0000-00-00 00:00:00','0000-00-00 00:00:00');
+/*!40000 ALTER TABLE `baak_NilaiMahasiswa` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `baak_NilaiPerubahan`
+--
+
+DROP TABLE IF EXISTS `baak_NilaiPerubahan`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `baak_NilaiPerubahan` (
+  `VersiUbah` smallint(6) NOT NULL,
+  `KodeMkBuka` varchar(15) COLLATE utf8_unicode_ci NOT NULL,
+  `KP` varchar(2) COLLATE utf8_unicode_ci NOT NULL,
+  `TglUbah` date NOT NULL,
+  `NoSurat` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
+  `TglSurat` date NOT NULL,
+  `NTSLama` smallint(6) NOT NULL,
+  `NASLama` smallint(6) NOT NULL,
+  `NisbiLama` varchar(2) COLLATE utf8_unicode_ci NOT NULL,
+  `NTSBaru` smallint(6) NOT NULL,
+  `NASBaru` smallint(6) NOT NULL,
+  `KodeNisbiBaru` varchar(2) COLLATE utf8_unicode_ci NOT NULL,
+  `Keterangan` text COLLATE utf8_unicode_ci NOT NULL,
+  `NRP` varchar(12) COLLATE utf8_unicode_ci NOT NULL,
+  `NPK` char(10) COLLATE utf8_unicode_ci NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  PRIMARY KEY (`VersiUbah`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `baak_NilaiPerubahan`
+--
+
+LOCK TABLES `baak_NilaiPerubahan` WRITE;
+/*!40000 ALTER TABLE `baak_NilaiPerubahan` DISABLE KEYS */;
+/*!40000 ALTER TABLE `baak_NilaiPerubahan` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `migrations`
+--
+
+DROP TABLE IF EXISTS `migrations`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `migrations` (
+  `migration` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `batch` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `migrations`
+--
+
+LOCK TABLES `migrations` WRITE;
+/*!40000 ALTER TABLE `migrations` DISABLE KEYS */;
+INSERT INTO `migrations` VALUES ('2016_08_31_045258_create_mahasiswa__ambil__mata__kuliahs_table',1),('2016_08_31_050108_create_jenis__nilais_table',1),('2016_08_31_050213_create_mahasiswa__punya__nilais_table',1),('2016_08_31_050228_create_nilai__perubahans_table',1);
+/*!40000 ALTER TABLE `migrations` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2016-11-19 21:43:29
+CREATE DATABASE  IF NOT EXISTS `BAAK` /*!40100 DEFAULT CHARACTER SET utf8 */;
+USE `BAAK`;
+-- MySQL dump 10.13  Distrib 5.7.9, for Win64 (x86_64)
+--
+-- Host: localhost    Database: BAAK
+-- ------------------------------------------------------
+-- Server version	5.7.12-log
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `BeritaAcara`
+--
+
+DROP TABLE IF EXISTS `BeritaAcara`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `BeritaAcara` (
+  `IdBeritaAcara` bigint(20) NOT NULL AUTO_INCREMENT,
+  `KodeMkBuka` varchar(15) COLLATE utf8_unicode_ci NOT NULL,
+  `KP` varchar(2) COLLATE utf8_unicode_ci NOT NULL,
+  `KodeRuang` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  `MhsTerdaftar` smallint(6) NOT NULL,
+  `MhsHadir` smallint(6) NOT NULL,
+  `MhsTilang` smallint(6) NOT NULL,
+  `UtsUas` enum('UTS','UAS') COLLATE utf8_unicode_ci NOT NULL,
+  `TglUjian` date NOT NULL,
+  `JamKe` enum('1','2','3','4','5','6','7','8','9') COLLATE utf8_unicode_ci NOT NULL,
+  `JmlMenit` smallint(6) NOT NULL,
+  `JenisSoal` enum('Ganda','Esai','Kombinasi') COLLATE utf8_unicode_ci NOT NULL,
+  `KejadianPenting` text CHARACTER SET utf8,
+  `WaktuUpdate` datetime DEFAULT NULL,
+  `LastUpdater` varchar(20) CHARACTER SET utf8 DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  PRIMARY KEY (`IdBeritaAcara`),
+  KEY `beritaacara_kodemkbuka_foreign` (`KodeMkBuka`),
+  CONSTRAINT `beritaacara_kodemkbuka_foreign` FOREIGN KEY (`KodeMkBuka`) REFERENCES `MkBuka` (`KodeMkBuka`) ON DELETE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=47 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `BeritaAcara`
+--
+
+LOCK TABLES `BeritaAcara` WRITE;
+/*!40000 ALTER TABLE `BeritaAcara` DISABLE KEYS */;
+INSERT INTO `BeritaAcara` VALUES (1,'1604A05520151','A','TF2.5',2,2,0,'UTS','2015-10-15','2',120,'Esai','','0000-00-00 00:00:00','','0000-00-00 00:00:00','0000-00-00 00:00:00'),(2,'1600A10420151','A','TF2.3',2,2,0,'UTS','2015-10-16','1',120,'Esai','','0000-00-00 00:00:00','','0000-00-00 00:00:00','0000-00-00 00:00:00'),(3,'1604A03220151','-','TF2.1',2,2,0,'UTS','2015-10-17','3',120,'Esai','','0000-00-00 00:00:00','','0000-00-00 00:00:00','0000-00-00 00:00:00'),(4,'1604A05520151','A','TF2.5',2,2,0,'UAS','2015-12-15','2',120,'Esai','','0000-00-00 00:00:00','','0000-00-00 00:00:00','0000-00-00 00:00:00'),(5,'1600A10420151','A','TF2.3',2,2,0,'UAS','2015-12-16','1',120,'Esai','','0000-00-00 00:00:00','','0000-00-00 00:00:00','0000-00-00 00:00:00'),(6,'1604A03220151','-','TF2.1',2,2,0,'UAS','2015-12-17','3',120,'Esai','','0000-00-00 00:00:00','','0000-00-00 00:00:00','0000-00-00 00:00:00'),(7,'1604A03320152','A','TF2.5',2,2,0,'UTS','2016-04-10','2',120,'Esai','','0000-00-00 00:00:00','','0000-00-00 00:00:00','0000-00-00 00:00:00'),(8,'1604A03320152','B','TF2.3',2,2,0,'UTS','2016-04-10','2',120,'Esai','','0000-00-00 00:00:00','','0000-00-00 00:00:00','0000-00-00 00:00:00'),(9,'1604A05520152','A','TF2.2',2,2,0,'UTS','2016-04-11','1',120,'Esai','','0000-00-00 00:00:00','','0000-00-00 00:00:00','0000-00-00 00:00:00'),(10,'1600A10420152','A','TF2.1',2,2,0,'UTS','2016-04-12','4',120,'Esai','','0000-00-00 00:00:00','','0000-00-00 00:00:00','0000-00-00 00:00:00'),(11,'1600A10420152','B','TF2.3',2,2,0,'UTS','2016-04-12','4',120,'Esai','','0000-00-00 00:00:00','','0000-00-00 00:00:00','0000-00-00 00:00:00'),(12,'1604A03120152','A','TF2.1',2,2,0,'UTS','2016-04-13','2',120,'Esai','','0000-00-00 00:00:00','','0000-00-00 00:00:00','0000-00-00 00:00:00'),(13,'1604A03220152','A','TF2.5',2,2,0,'UTS','2016-04-14','3',120,'Esai','','0000-00-00 00:00:00','','0000-00-00 00:00:00','0000-00-00 00:00:00'),(14,'1604A03320152','A','TF2.5',2,2,0,'UAS','2016-06-10','2',120,'Esai','','0000-00-00 00:00:00','','0000-00-00 00:00:00','0000-00-00 00:00:00'),(15,'1604A03320152','B','TF2.3',2,2,0,'UAS','2016-06-10','2',120,'Esai','','0000-00-00 00:00:00','','0000-00-00 00:00:00','0000-00-00 00:00:00'),(16,'1604A05520152','A','TF2.2',2,2,0,'UAS','2016-06-11','1',120,'Esai','','0000-00-00 00:00:00','','0000-00-00 00:00:00','0000-00-00 00:00:00'),(17,'1600A10420152','A','TF2.1',2,2,0,'UAS','2016-06-12','4',120,'Esai','','0000-00-00 00:00:00','','0000-00-00 00:00:00','0000-00-00 00:00:00'),(18,'1600A10420152','B','TF2.3',2,2,0,'UAS','2016-06-12','4',120,'Esai','','0000-00-00 00:00:00','','0000-00-00 00:00:00','0000-00-00 00:00:00'),(19,'1604A03120152','A','TF2.1',2,2,0,'UAS','2016-06-13','2',120,'Esai','','0000-00-00 00:00:00','','0000-00-00 00:00:00','0000-00-00 00:00:00'),(20,'1604A03220152','A','TF2.5',2,2,0,'UAS','2016-06-14','3',120,'Esai','','0000-00-00 00:00:00','','0000-00-00 00:00:00','0000-00-00 00:00:00'),(21,'1604A01120161','A','TF2.5',5,3,0,'UTS','2016-10-10','2',120,'Esai','','0000-00-00 00:00:00','','0000-00-00 00:00:00','0000-00-00 00:00:00'),(22,'1604A01120161','B','TF2.3',5,5,0,'UTS','2016-10-10','2',120,'Esai','','0000-00-00 00:00:00','','0000-00-00 00:00:00','0000-00-00 00:00:00'),(23,'1604A02120161','-','TF2.5',6,6,0,'UTS','2016-10-11','3',120,'Esai','','0000-00-00 00:00:00','','0000-00-00 00:00:00','0000-00-00 00:00:00'),(24,'1607A02120161','A','TC4.A',3,3,0,'UTS','2016-10-12','1',120,'Esai','','0000-00-00 00:00:00','','0000-00-00 00:00:00','0000-00-00 00:00:00'),(25,'1607A02120161','B','TF4.B',4,4,0,'UTS','2016-10-12','1',120,'Esai','','0000-00-00 00:00:00','','0000-00-00 00:00:00','0000-00-00 00:00:00'),(26,'1604A05120161','A','TC4.A',4,4,0,'UTS','2016-10-13','2',120,'Esai','','0000-00-00 00:00:00','','0000-00-00 00:00:00','0000-00-00 00:00:00'),(27,'1604A05120161','B','TF4.B',3,3,0,'UTS','2016-10-13','2',120,'Esai','','0000-00-00 00:00:00','','0000-00-00 00:00:00','0000-00-00 00:00:00'),(28,'1604A03220161','A','TF2.5',5,5,0,'UTS','2016-10-14','3',120,'Esai','','0000-00-00 00:00:00','','0000-00-00 00:00:00','0000-00-00 00:00:00'),(29,'1604A03120161','-','TF2.1',3,3,0,'UTS','2016-10-15','2',120,'Esai','','0000-00-00 00:00:00','','0000-00-00 00:00:00','0000-00-00 00:00:00'),(30,'1600A10420161','A','TF2.5',2,2,0,'UTS','2016-10-17','2',120,'Esai','','0000-00-00 00:00:00','','0000-00-00 00:00:00','0000-00-00 00:00:00'),(31,'1600A10420161','B','TF2.3',3,3,0,'UTS','2016-10-17','2',120,'Esai','','0000-00-00 00:00:00','','0000-00-00 00:00:00','0000-00-00 00:00:00'),(32,'1600A10420161','C','TF2.1',2,2,0,'UTS','2016-10-17','2',120,'Esai','','0000-00-00 00:00:00','','0000-00-00 00:00:00','0000-00-00 00:00:00'),(33,'1600A10420161','D','TF2.4',2,2,0,'UTS','2016-10-17','2',120,'Esai','','0000-00-00 00:00:00','','0000-00-00 00:00:00','0000-00-00 00:00:00'),(34,'1604A03320161','A','TC4.A',4,4,0,'UTS','2016-10-18','1',120,'Esai','','0000-00-00 00:00:00','','0000-00-00 00:00:00','0000-00-00 00:00:00'),(35,'1604A03320161','B','TF4.B',2,2,0,'UTS','2016-10-18','1',120,'Esai','','0000-00-00 00:00:00','','0000-00-00 00:00:00','0000-00-00 00:00:00'),(36,'1604A01120161','A','TF2.5',5,2,2,'UAS','2016-12-10','2',120,'Esai','','0000-00-00 00:00:00','','0000-00-00 00:00:00','0000-00-00 00:00:00'),(37,'1604A01120161','B','TF2.3',5,5,0,'UAS','2016-12-10','2',120,'Esai','','0000-00-00 00:00:00','','0000-00-00 00:00:00','0000-00-00 00:00:00'),(38,'1604A02120161','-','TF2.5',6,6,0,'UAS','2016-12-11','3',120,'Esai','','0000-00-00 00:00:00','','0000-00-00 00:00:00','0000-00-00 00:00:00'),(39,'1607A02120161','A','TC4.A',3,3,0,'UAS','2016-12-12','1',120,'Esai','','0000-00-00 00:00:00','','0000-00-00 00:00:00','0000-00-00 00:00:00'),(40,'1607A02120161','B','TF4.B',4,4,0,'UAS','2016-12-12','1',120,'Esai','','0000-00-00 00:00:00','','0000-00-00 00:00:00','0000-00-00 00:00:00'),(41,'1604A05120161','A','TC4.A',4,4,0,'UAS','2016-12-13','2',120,'Esai','','0000-00-00 00:00:00','','0000-00-00 00:00:00','0000-00-00 00:00:00'),(42,'1604A05120161','B','TF4.B',3,3,0,'UAS','2016-12-13','2',120,'Esai','','0000-00-00 00:00:00','','0000-00-00 00:00:00','0000-00-00 00:00:00'),(43,'1600A10420161','A','TF2.5',2,2,0,'UAS','2016-12-17','2',120,'Esai','','0000-00-00 00:00:00','','0000-00-00 00:00:00','0000-00-00 00:00:00'),(44,'1600A10420161','B','TF2.3',3,3,0,'UAS','2016-12-17','2',120,'Esai','','0000-00-00 00:00:00','','0000-00-00 00:00:00','0000-00-00 00:00:00'),(45,'1600A10420161','C','TF2.1',2,2,0,'UAS','2016-12-17','2',120,'Esai','','0000-00-00 00:00:00','','0000-00-00 00:00:00','0000-00-00 00:00:00'),(46,'1600A10420161','D','TF2.4',2,2,0,'UAS','2016-12-17','2',120,'Esai','','0000-00-00 00:00:00','','0000-00-00 00:00:00','0000-00-00 00:00:00');
+/*!40000 ALTER TABLE `BeritaAcara` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `BeritaAcaraMhs`
+--
+
+DROP TABLE IF EXISTS `BeritaAcaraMhs`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `BeritaAcaraMhs` (
+  `NRP` varchar(12) COLLATE utf8_unicode_ci NOT NULL,
+  `IdBeritaAcara` bigint(20) NOT NULL,
+  `Jenis` enum('Tidak Hadir','Izin') COLLATE utf8_unicode_ci NOT NULL,
+  `NoSuratIjin` varchar(100) CHARACTER SET utf8 DEFAULT NULL,
+  `TglSuratIjin` date DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  KEY `beritaacaramhs_nrp_foreign` (`NRP`),
+  KEY `beritaacaramhs_idberitaacara_foreign` (`IdBeritaAcara`),
+  CONSTRAINT `beritaacaramhs_idberitaacara_foreign` FOREIGN KEY (`IdBeritaAcara`) REFERENCES `BeritaAcara` (`IdBeritaAcara`) ON DELETE CASCADE,
+  CONSTRAINT `beritaacaramhs_nrp_foreign` FOREIGN KEY (`NRP`) REFERENCES `Mahasiswa` (`NRP`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `BeritaAcaraMhs`
+--
+
+LOCK TABLES `BeritaAcaraMhs` WRITE;
+/*!40000 ALTER TABLE `BeritaAcaraMhs` DISABLE KEYS */;
+INSERT INTO `BeritaAcaraMhs` VALUES ('6134020',21,'Tidak Hadir','','0000-00-00','0000-00-00 00:00:00','0000-00-00 00:00:00'),('6134004',21,'Tidak Hadir','','0000-00-00','0000-00-00 00:00:00','0000-00-00 00:00:00'),('6134111',36,'Tidak Hadir','','0000-00-00','0000-00-00 00:00:00','0000-00-00 00:00:00'),('6134115',36,'Izin','FX/02/01/2016','2016-12-10','0000-00-00 00:00:00','0000-00-00 00:00:00'),('6134004',36,'Tidak Hadir','','0000-00-00','0000-00-00 00:00:00','0000-00-00 00:00:00');
+/*!40000 ALTER TABLE `BeritaAcaraMhs` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `DosenAjarMk`
+--
+
+DROP TABLE IF EXISTS `DosenAjarMk`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `DosenAjarMk` (
+  `NPK` char(10) COLLATE utf8_unicode_ci NOT NULL,
+  `KodeMkBuka` varchar(15) COLLATE utf8_unicode_ci NOT NULL,
+  `KP` varchar(2) COLLATE utf8_unicode_ci NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  KEY `dosenajarmk_npk_foreign` (`NPK`),
+  KEY `dosenajarmk_kodemkbuka_foreign` (`KodeMkBuka`),
+  CONSTRAINT `dosenajarmk_kodemkbuka_foreign` FOREIGN KEY (`KodeMkBuka`) REFERENCES `MkBuka` (`KodeMkBuka`) ON DELETE CASCADE,
+  CONSTRAINT `dosenajarmk_npk_foreign` FOREIGN KEY (`NPK`) REFERENCES `Karyawan` (`NPK`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `DosenAjarMk`
+--
+
+LOCK TABLES `DosenAjarMk` WRITE;
+/*!40000 ALTER TABLE `DosenAjarMk` DISABLE KEYS */;
+INSERT INTO `DosenAjarMk` VALUES ('197030','1604A01120161','A','0000-00-00 00:00:00','0000-00-00 00:00:00'),('204027','1604A01120161','B','0000-00-00 00:00:00','0000-00-00 00:00:00'),('204027','1604A02120161','-','0000-00-00 00:00:00','0000-00-00 00:00:00'),('209344','1607A02120161','A','0000-00-00 00:00:00','0000-00-00 00:00:00'),('199013','1607A02120161','B','0000-00-00 00:00:00','0000-00-00 00:00:00'),('208020','1604A05120161','A','0000-00-00 00:00:00','0000-00-00 00:00:00'),('209345','1604A05120161','B','0000-00-00 00:00:00','0000-00-00 00:00:00'),('215027','1604A03220161','A','0000-00-00 00:00:00','0000-00-00 00:00:00'),('209345','1604A03120161','-','0000-00-00 00:00:00','0000-00-00 00:00:00'),('204027','1600A10420161','A','0000-00-00 00:00:00','0000-00-00 00:00:00'),('197030','1600A10420161','B','0000-00-00 00:00:00','0000-00-00 00:00:00'),('203014','1600A10420161','C','0000-00-00 00:00:00','0000-00-00 00:00:00'),('197030','1600A10420161','D','0000-00-00 00:00:00','0000-00-00 00:00:00'),('202017','1604A05520161','A','0000-00-00 00:00:00','0000-00-00 00:00:00'),('208020','1604A03320161','A','0000-00-00 00:00:00','0000-00-00 00:00:00'),('209344','1604A03320161','B','0000-00-00 00:00:00','0000-00-00 00:00:00'),('209345','1604A03220152','A','0000-00-00 00:00:00','0000-00-00 00:00:00'),('197030','1604A03120152','A','0000-00-00 00:00:00','0000-00-00 00:00:00'),('204027','1600A10420152','A','0000-00-00 00:00:00','0000-00-00 00:00:00'),('197030','1600A10420152','B','0000-00-00 00:00:00','0000-00-00 00:00:00'),('204027','1604A05520152','-','0000-00-00 00:00:00','0000-00-00 00:00:00'),('208020','1604A03320152','A','0000-00-00 00:00:00','0000-00-00 00:00:00'),('209344','1604A03320152','B','0000-00-00 00:00:00','0000-00-00 00:00:00'),('215027','1604A03220151','-','0000-00-00 00:00:00','0000-00-00 00:00:00'),('204027','1600A10420151','A','0000-00-00 00:00:00','0000-00-00 00:00:00'),('197030','1604A05520151','A','0000-00-00 00:00:00','0000-00-00 00:00:00');
+/*!40000 ALTER TABLE `DosenAjarMk` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `Karyawan`
+--
+
+DROP TABLE IF EXISTS `Karyawan`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `Karyawan` (
+  `NPK` char(10) COLLATE utf8_unicode_ci NOT NULL,
+  `Nama` varchar(40) COLLATE utf8_unicode_ci NOT NULL,
+  `IdUser` int(10) unsigned NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  PRIMARY KEY (`NPK`),
+  KEY `karyawan_iduser_foreign` (`IdUser`),
+  CONSTRAINT `karyawan_iduser_foreign` FOREIGN KEY (`IdUser`) REFERENCES `User` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `Karyawan`
+--
+
+LOCK TABLES `Karyawan` WRITE;
+/*!40000 ALTER TABLE `Karyawan` DISABLE KEYS */;
+INSERT INTO `Karyawan` VALUES ('187018','Ir. Bambang Prijambodo, M.MT.',2,'0000-00-00 00:00:00','0000-00-00 00:00:00'),('197030','Susana Limanto, S.T., M.Si.',3,'0000-00-00 00:00:00','0000-00-00 00:00:00'),('199013','Lisana, S.Kom., M.Inf.Tech.',10,'0000-00-00 00:00:00','0000-00-00 00:00:00'),('202017','Dhiani Tresna Absari, S.T., M.Kom.',1,'0000-00-00 00:00:00','0000-00-00 00:00:00'),('203014','Ellysa Tjandra, S.T., M.MT.',5,'0000-00-00 00:00:00','0000-00-00 00:00:00'),('204027','Monica Widiasri, S.Kom., M.Kom.',8,'0000-00-00 00:00:00','0000-00-00 00:00:00'),('208020','Andre, S.T., M.Sc.',6,'0000-00-00 00:00:00','0000-00-00 00:00:00'),('209344','Daniel Soesanto, S.T., M.M',7,'0000-00-00 00:00:00','0000-00-00 00:00:00'),('209345','Marcellinus Ferdinand Suciadi, S.T., M.C',9,'0000-00-00 00:00:00','0000-00-00 00:00:00'),('215027','Maya Hilda Lestari Louk, S.T., M.Sc.',4,'0000-00-00 00:00:00','0000-00-00 00:00:00');
+/*!40000 ALTER TABLE `Karyawan` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `Mahasiswa`
+--
+
+DROP TABLE IF EXISTS `Mahasiswa`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `Mahasiswa` (
+  `NRP` varchar(12) COLLATE utf8_unicode_ci NOT NULL,
+  `Nama` varchar(40) COLLATE utf8_unicode_ci NOT NULL,
+  `ThnAkademikTerima` char(4) COLLATE utf8_unicode_ci NOT NULL,
+  `SemesterTerima` enum('Gasal','Genap') COLLATE utf8_unicode_ci NOT NULL,
+  `IdUser` int(10) unsigned NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  PRIMARY KEY (`NRP`),
+  KEY `mahasiswa_iduser_foreign` (`IdUser`),
+  CONSTRAINT `mahasiswa_iduser_foreign` FOREIGN KEY (`IdUser`) REFERENCES `User` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `Mahasiswa`
+--
+
+LOCK TABLES `Mahasiswa` WRITE;
+/*!40000 ALTER TABLE `Mahasiswa` DISABLE KEYS */;
+INSERT INTO `Mahasiswa` VALUES ('6134004','Andreas Teja','2012','Gasal',19,'0000-00-00 00:00:00','0000-00-00 00:00:00'),('6134020','Hadi Kusuma Poernomo','2012','Gasal',20,'0000-00-00 00:00:00','0000-00-00 00:00:00'),('6134021','Michael Poernomo','2012','Gasal',17,'0000-00-00 00:00:00','0000-00-00 00:00:00'),('6134030','Aloysius Wiranata','2012','Gasal',16,'0000-00-00 00:00:00','0000-00-00 00:00:00'),('6134040','Christian Alexander','2012','Gasal',18,'0000-00-00 00:00:00','0000-00-00 00:00:00'),('6134059','Daivalentineno Janitra Salim','2012','Gasal',11,'0000-00-00 00:00:00','0000-00-00 00:00:00'),('6134087','Ika Suryani Kusuma','2012','Gasal',14,'0000-00-00 00:00:00','0000-00-00 00:00:00'),('6134108','Christine Tandiwijaya','2012','Gasal',15,'0000-00-00 00:00:00','0000-00-00 00:00:00'),('6134111','Steven Brian Susantio','2012','Gasal',12,'0000-00-00 00:00:00','0000-00-00 00:00:00'),('6134115','Eduardus Aldo','2012','Gasal',13,'0000-00-00 00:00:00','0000-00-00 00:00:00');
+/*!40000 ALTER TABLE `Mahasiswa` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `MataKuliah`
+--
+
+DROP TABLE IF EXISTS `MataKuliah`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `MataKuliah` (
+  `KodeMk` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  `Nama` varchar(40) COLLATE utf8_unicode_ci NOT NULL,
+  `NamaEng` varchar(40) COLLATE utf8_unicode_ci NOT NULL,
+  `Sks` smallint(6) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  PRIMARY KEY (`KodeMk`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `MataKuliah`
+--
+
+LOCK TABLES `MataKuliah` WRITE;
+/*!40000 ALTER TABLE `MataKuliah` DISABLE KEYS */;
+INSERT INTO `MataKuliah` VALUES ('1600A002 ','BAHASA INGGRIS','ENGLISH ACADEMIC',2,'0000-00-00 00:00:00','0000-00-00 00:00:00'),('1600A104','MATEMATIKA','MATHEMATICS',4,'0000-00-00 00:00:00','0000-00-00 00:00:00'),('1604A011','ALGORITMA DAN PEMROGRAMAN','ALGORITHM AND PROGRAMMING',6,'0000-00-00 00:00:00','0000-00-00 00:00:00'),('1604A021','PEMROGRAMAN BERORIENTASI OBJEK','OBJECTED ORIENTED PROGRAMMING',6,'0000-00-00 00:00:00','0000-00-00 00:00:00'),('1604A031 ','STRUKTUR DATA','DATA STRUCTURE',4,'0000-00-00 00:00:00','0000-00-00 00:00:00'),('1604A032','JARINGAN KOMPUTER','COMPUTER NETWORK',3,'0000-00-00 00:00:00','0000-00-00 00:00:00'),('1604A033','DESAIN WEB','WEB DESIGN',3,'0000-00-00 00:00:00','0000-00-00 00:00:00'),('1604A051','PEMROGRAMAN TERDISTRIBUSI','DISTRIBUTED PROGRAMMING',4,'0000-00-00 00:00:00','0000-00-00 00:00:00'),('1604A055 ','STATISTIKA','STATISTICS',3,'0000-00-00 00:00:00','0000-00-00 00:00:00'),('1607A021','BASIS DATA','DATABASE PROGRAMMING',4,'0000-00-00 00:00:00','0000-00-00 00:00:00');
+/*!40000 ALTER TABLE `MataKuliah` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `MhsAmbilMk`
+--
+
+DROP TABLE IF EXISTS `MhsAmbilMk`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `MhsAmbilMk` (
+  `NRP` varchar(12) COLLATE utf8_unicode_ci NOT NULL,
+  `KodeMkBuka` varchar(15) COLLATE utf8_unicode_ci NOT NULL,
+  `KP` varchar(2) COLLATE utf8_unicode_ci NOT NULL,
+  `NTS` smallint(6) NOT NULL,
+  `NAS` smallint(6) NOT NULL,
+  `NA` double(6,3) NOT NULL,
+  `KodeNisbi` varchar(2) COLLATE utf8_unicode_ci NOT NULL,
+  `HadirUTS` enum('Y','N') COLLATE utf8_unicode_ci NOT NULL,
+  `HadirUAS` enum('Y','N') COLLATE utf8_unicode_ci NOT NULL,
+  `StatusTilangPresensi` enum('Y','N') COLLATE utf8_unicode_ci NOT NULL,
+  `PesertaUTS` enum('Y','N') COLLATE utf8_unicode_ci NOT NULL,
+  `PesertaUAS` enum('Y','N') COLLATE utf8_unicode_ci NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  KEY `mhsambilmk_nrp_foreign` (`NRP`),
+  KEY `mhsambilmk_kodemkbuka_foreign` (`KodeMkBuka`),
+  CONSTRAINT `mhsambilmk_kodemkbuka_foreign` FOREIGN KEY (`KodeMkBuka`) REFERENCES `MkBuka` (`KodeMkBuka`) ON DELETE CASCADE,
+  CONSTRAINT `mhsambilmk_nrp_foreign` FOREIGN KEY (`NRP`) REFERENCES `Mahasiswa` (`NRP`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `MhsAmbilMk`
+--
+
+LOCK TABLES `MhsAmbilMk` WRITE;
+/*!40000 ALTER TABLE `MhsAmbilMk` DISABLE KEYS */;
+INSERT INTO `MhsAmbilMk` VALUES ('6134059','1604A01120161','A',0,0,0.000,'','Y','Y','N','Y','Y','0000-00-00 00:00:00','0000-00-00 00:00:00'),('6134111','1604A01120161','A',0,0,0.000,'','Y','N','Y','Y','N','0000-00-00 00:00:00','0000-00-00 00:00:00'),('6134115','1604A01120161','A',0,0,0.000,'','Y','N','Y','Y','N','0000-00-00 00:00:00','0000-00-00 00:00:00'),('6134020','1604A01120161','A',0,0,0.000,'','N','Y','N','N','Y','0000-00-00 00:00:00','0000-00-00 00:00:00'),('6134004','1604A01120161','A',0,0,0.000,'','N','N','N','N','Y','0000-00-00 00:00:00','0000-00-00 00:00:00'),('6134087','1604A01120161','B',0,0,0.000,'','Y','Y','N','Y','Y','0000-00-00 00:00:00','0000-00-00 00:00:00'),('6134108','1604A01120161','B',0,0,0.000,'','Y','Y','N','Y','Y','0000-00-00 00:00:00','0000-00-00 00:00:00'),('6134021','1604A01120161','B',0,0,0.000,'','Y','Y','N','Y','Y','0000-00-00 00:00:00','0000-00-00 00:00:00'),('6134040','1604A01120161','B',0,0,0.000,'','Y','Y','N','Y','Y','0000-00-00 00:00:00','0000-00-00 00:00:00'),('6134030','1604A01120161','B',0,0,0.000,'','Y','Y','N','Y','Y','0000-00-00 00:00:00','0000-00-00 00:00:00'),('6134059','1604A02120161','-',0,0,0.000,'','Y','Y','N','Y','Y','0000-00-00 00:00:00','0000-00-00 00:00:00'),('6134111','1604A02120161','-',0,0,0.000,'','Y','Y','N','Y','Y','0000-00-00 00:00:00','0000-00-00 00:00:00'),('6134115','1604A02120161','-',0,0,0.000,'','Y','Y','N','Y','Y','0000-00-00 00:00:00','0000-00-00 00:00:00'),('6134087','1604A02120161','-',0,0,0.000,'','Y','Y','N','Y','Y','0000-00-00 00:00:00','0000-00-00 00:00:00'),('6134108','1604A02120161','-',0,0,0.000,'','Y','Y','N','Y','Y','0000-00-00 00:00:00','0000-00-00 00:00:00'),('6134040','1604A02120161','-',0,0,0.000,'','Y','Y','N','Y','Y','0000-00-00 00:00:00','0000-00-00 00:00:00'),('6134059','1607A02120161','A',0,0,0.000,'','Y','Y','N','Y','Y','0000-00-00 00:00:00','0000-00-00 00:00:00'),('6134111','1607A02120161','A',0,0,0.000,'','Y','Y','N','Y','Y','0000-00-00 00:00:00','0000-00-00 00:00:00'),('6134020','1607A02120161','A',0,0,0.000,'','Y','Y','N','Y','Y','0000-00-00 00:00:00','0000-00-00 00:00:00'),('6134115','1607A02120161','B',0,0,0.000,'','Y','Y','N','Y','Y','0000-00-00 00:00:00','0000-00-00 00:00:00'),('6134004','1607A02120161','B',0,0,0.000,'','Y','Y','N','Y','Y','0000-00-00 00:00:00','0000-00-00 00:00:00'),('6134021','1607A02120161','B',0,0,0.000,'','Y','Y','N','Y','Y','0000-00-00 00:00:00','0000-00-00 00:00:00'),('6134030','1607A02120161','B',0,0,0.000,'','Y','Y','N','Y','Y','0000-00-00 00:00:00','0000-00-00 00:00:00'),('6134115','1604A05120161','A',0,0,0.000,'','Y','Y','N','Y','Y','0000-00-00 00:00:00','0000-00-00 00:00:00'),('6134087','1604A05120161','A',0,0,0.000,'','Y','Y','N','Y','Y','0000-00-00 00:00:00','0000-00-00 00:00:00'),('6134108','1604A05120161','A',0,0,0.000,'','Y','Y','N','Y','Y','0000-00-00 00:00:00','0000-00-00 00:00:00'),('6134030','1604A05120161','A',0,0,0.000,'','Y','Y','N','Y','Y','0000-00-00 00:00:00','0000-00-00 00:00:00'),('6134020','1604A05120161','B',0,0,0.000,'','Y','Y','N','Y','Y','0000-00-00 00:00:00','0000-00-00 00:00:00'),('6134004','1604A05120161','B',0,0,0.000,'','Y','Y','N','Y','Y','0000-00-00 00:00:00','0000-00-00 00:00:00'),('6134021','1604A05120161','B',0,0,0.000,'','Y','Y','N','Y','Y','0000-00-00 00:00:00','0000-00-00 00:00:00'),('6134115','1604A03220161','A',0,0,0.000,'','Y','Y','N','Y','Y','0000-00-00 00:00:00','0000-00-00 00:00:00'),('6134020','1604A03220161','A',0,0,0.000,'','Y','Y','N','Y','Y','0000-00-00 00:00:00','0000-00-00 00:00:00'),('6134004','1604A03220161','A',0,0,0.000,'','Y','Y','N','Y','Y','0000-00-00 00:00:00','0000-00-00 00:00:00'),('6134021','1604A03220161','A',0,0,0.000,'','Y','Y','N','Y','Y','0000-00-00 00:00:00','0000-00-00 00:00:00'),('6134030','1604A03220161','A',0,0,0.000,'','Y','Y','N','Y','Y','0000-00-00 00:00:00','0000-00-00 00:00:00'),('6134059','1604A03120161','-',0,0,0.000,'','Y','Y','N','Y','Y','0000-00-00 00:00:00','0000-00-00 00:00:00'),('6134111','1604A03120161','-',0,0,0.000,'','Y','Y','N','Y','Y','0000-00-00 00:00:00','0000-00-00 00:00:00'),('6134020','1604A03120161','-',0,0,0.000,'','Y','Y','N','Y','Y','0000-00-00 00:00:00','0000-00-00 00:00:00'),('6134004','1600A10420161','A',0,0,0.000,'','Y','Y','N','Y','Y','0000-00-00 00:00:00','0000-00-00 00:00:00'),('6134087','1600A10420161','A',0,0,0.000,'','Y','Y','N','Y','Y','0000-00-00 00:00:00','0000-00-00 00:00:00'),('6134059','1600A10420161','B',0,0,0.000,'','Y','Y','N','Y','Y','0000-00-00 00:00:00','0000-00-00 00:00:00'),('6134111','1600A10420161','B',0,0,0.000,'','Y','Y','N','Y','Y','0000-00-00 00:00:00','0000-00-00 00:00:00'),('6134030','1600A10420161','B',0,0,0.000,'','Y','Y','N','Y','Y','0000-00-00 00:00:00','0000-00-00 00:00:00'),('6134108','1600A10420161','C',0,0,0.000,'','Y','Y','N','Y','Y','0000-00-00 00:00:00','0000-00-00 00:00:00'),('6134040','1600A10420161','C',0,0,0.000,'','Y','Y','N','Y','Y','0000-00-00 00:00:00','0000-00-00 00:00:00'),('6134020','1600A10420161','D',0,0,0.000,'','Y','Y','N','Y','Y','0000-00-00 00:00:00','0000-00-00 00:00:00'),('6134021','1600A10420161','D',0,0,0.000,'','Y','Y','N','Y','Y','0000-00-00 00:00:00','0000-00-00 00:00:00'),('6134004','1604A05520161','A',0,0,0.000,'','Y','Y','N','Y','Y','0000-00-00 00:00:00','0000-00-00 00:00:00'),('6134021','1604A05520161','A',0,0,0.000,'','Y','Y','N','Y','Y','0000-00-00 00:00:00','0000-00-00 00:00:00'),('6134040','1604A05520161','A',0,0,0.000,'','Y','Y','N','Y','Y','0000-00-00 00:00:00','0000-00-00 00:00:00'),('6134020','1604A03320161','A',0,0,0.000,'','Y','Y','N','Y','Y','0000-00-00 00:00:00','0000-00-00 00:00:00'),('6134087','1604A03320161','A',0,0,0.000,'','Y','Y','N','Y','Y','0000-00-00 00:00:00','0000-00-00 00:00:00'),('6134030','1604A03320161','A',0,0,0.000,'','Y','Y','N','Y','Y','0000-00-00 00:00:00','0000-00-00 00:00:00'),('6134108','1604A03320161','A',0,0,0.000,'','Y','Y','N','Y','Y','0000-00-00 00:00:00','0000-00-00 00:00:00'),('6134021','1604A03320161','B',0,0,0.000,'','Y','Y','N','Y','Y','0000-00-00 00:00:00','0000-00-00 00:00:00'),('6134040','1604A03320161','B',0,0,0.000,'','Y','Y','N','Y','Y','0000-00-00 00:00:00','0000-00-00 00:00:00'),('6134021','1604A03220152','A',73,83,79.000,'AB','Y','Y','N','Y','Y','0000-00-00 00:00:00','0000-00-00 00:00:00'),('6134040','1604A03220152','A',73,85,80.200,'AB','Y','Y','N','Y','Y','0000-00-00 00:00:00','0000-00-00 00:00:00'),('6134059','1604A03120152','A',100,100,100.000,'A','Y','Y','N','Y','Y','0000-00-00 00:00:00','0000-00-00 00:00:00'),('6134111','1604A03120152','A',100,90,94.000,'A','Y','Y','N','Y','Y','0000-00-00 00:00:00','0000-00-00 00:00:00'),('6134059','1600A10420152','A',77,81,79.100,'AB','Y','Y','N','Y','Y','0000-00-00 00:00:00','0000-00-00 00:00:00'),('6134040','1600A10420152','A',81,75,76.900,'AB','Y','Y','N','Y','Y','0000-00-00 00:00:00','0000-00-00 00:00:00'),('6134111','1600A10420152','B',80,80,80.000,'AB','Y','Y','N','Y','Y','0000-00-00 00:00:00','0000-00-00 00:00:00'),('6134020','1600A10420152','B',75,75,75.000,'AB','Y','Y','N','Y','Y','0000-00-00 00:00:00','0000-00-00 00:00:00'),('6134021','1604A05520152','A',90,70,78.000,'AB','Y','Y','N','Y','Y','0000-00-00 00:00:00','0000-00-00 00:00:00'),('6134059','1604A05520152','A',70,70,70.000,'B','Y','Y','N','Y','Y','0000-00-00 00:00:00','0000-00-00 00:00:00'),('6134004','1604A03320152','A',80,80,80.000,'AB','Y','Y','N','Y','Y','0000-00-00 00:00:00','0000-00-00 00:00:00'),('6134059','1604A03320152','A',90,90,90.000,'A','Y','Y','N','Y','Y','0000-00-00 00:00:00','0000-00-00 00:00:00'),('6134108','1604A03320152','B',80,85,83.000,'A','Y','Y','N','Y','Y','0000-00-00 00:00:00','0000-00-00 00:00:00'),('6134087','1604A03320152','B',70,75,73.000,'AB','Y','Y','N','Y','Y','0000-00-00 00:00:00','0000-00-00 00:00:00'),('6134059','1604A03220151','-',90,95,93.000,'A','Y','Y','N','Y','Y','0000-00-00 00:00:00','0000-00-00 00:00:00'),('6134111','1604A03220151','-',80,85,83.000,'A','Y','Y','N','Y','Y','0000-00-00 00:00:00','0000-00-00 00:00:00'),('6134059','1600A10420151','A',84,82,82.300,'A','Y','Y','N','Y','Y','0000-00-00 00:00:00','0000-00-00 00:00:00'),('6134115','1600A10420151','A',74,83,79.020,'AB','Y','Y','N','Y','Y','0000-00-00 00:00:00','0000-00-00 00:00:00'),('6134111','1604A05520151','A',73,75,74.200,'AB','Y','Y','N','Y','Y','0000-00-00 00:00:00','0000-00-00 00:00:00'),('6134115','1604A05520151','A',75,70,72.000,'B','Y','Y','N','Y','Y','0000-00-00 00:00:00','0000-00-00 00:00:00');
+/*!40000 ALTER TABLE `MhsAmbilMk` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `MkBuka`
+--
+
+DROP TABLE IF EXISTS `MkBuka`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `MkBuka` (
+  `KodeMkBuka` varchar(15) COLLATE utf8_unicode_ci NOT NULL,
+  `KodeMk` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  `ThnAkademik` char(4) COLLATE utf8_unicode_ci NOT NULL,
+  `Semester` enum('Gasal','Genap','Pendek','Trimester3') COLLATE utf8_unicode_ci NOT NULL,
+  `NPK` char(10) COLLATE utf8_unicode_ci NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  PRIMARY KEY (`KodeMkBuka`),
+  KEY `mkbuka_kodemk_foreign` (`KodeMk`),
+  KEY `mkbuka_thnakademik_foreign` (`ThnAkademik`),
+  KEY `mkbuka_npk_foreign` (`NPK`),
+  CONSTRAINT `mkbuka_kodemk_foreign` FOREIGN KEY (`KodeMk`) REFERENCES `MataKuliah` (`KodeMk`) ON DELETE CASCADE,
+  CONSTRAINT `mkbuka_npk_foreign` FOREIGN KEY (`NPK`) REFERENCES `Karyawan` (`NPK`) ON DELETE CASCADE,
+  CONSTRAINT `mkbuka_thnakademik_foreign` FOREIGN KEY (`ThnAkademik`) REFERENCES `SemesterAktif` (`ThnAkademik`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `MkBuka`
+--
+
+LOCK TABLES `MkBuka` WRITE;
+/*!40000 ALTER TABLE `MkBuka` DISABLE KEYS */;
+INSERT INTO `MkBuka` VALUES ('1600A10420151','1600A104','2015','Gasal','204027','0000-00-00 00:00:00','0000-00-00 00:00:00'),('1600A10420152','1600A104','2015','Genap','204027','0000-00-00 00:00:00','0000-00-00 00:00:00'),('1600A10420161','1600A104','2016','Gasal','204027','0000-00-00 00:00:00','0000-00-00 00:00:00'),('1604A01120161','1604A011','2016','Gasal','197030','0000-00-00 00:00:00','0000-00-00 00:00:00'),('1604A02120161','1604A021','2016','Gasal','204027','0000-00-00 00:00:00','0000-00-00 00:00:00'),('1604A03120152','1604A031','2015','Genap','197030','0000-00-00 00:00:00','0000-00-00 00:00:00'),('1604A03120161','1604A031','2016','Gasal','209345','0000-00-00 00:00:00','0000-00-00 00:00:00'),('1604A03220151','1604A032','2015','Gasal','215027','0000-00-00 00:00:00','0000-00-00 00:00:00'),('1604A03220152','1604A032','2015','Genap','209345','0000-00-00 00:00:00','0000-00-00 00:00:00'),('1604A03220161','1604A032','2016','Gasal','215027','0000-00-00 00:00:00','0000-00-00 00:00:00'),('1604A03320152','1604A033','2015','Genap','208020','0000-00-00 00:00:00','0000-00-00 00:00:00'),('1604A03320161','1604A033','2016','Gasal','208020','0000-00-00 00:00:00','0000-00-00 00:00:00'),('1604A05120161','1604A051','2016','Gasal','208020','0000-00-00 00:00:00','0000-00-00 00:00:00'),('1604A05520151','1604A055','2015','Gasal','197030','0000-00-00 00:00:00','0000-00-00 00:00:00'),('1604A05520152','1604A055','2015','Genap','204027','0000-00-00 00:00:00','0000-00-00 00:00:00'),('1604A05520161','1604A055','2016','Gasal','202017','0000-00-00 00:00:00','0000-00-00 00:00:00'),('1607A02120161','1607A021','2016','Gasal','209344','0000-00-00 00:00:00','0000-00-00 00:00:00');
+/*!40000 ALTER TABLE `MkBuka` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `Nilai`
+--
+
+DROP TABLE IF EXISTS `Nilai`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `Nilai` (
+  `KodeNilai` char(21) COLLATE utf8_unicode_ci NOT NULL,
+  `KodeMkBuka` varchar(15) COLLATE utf8_unicode_ci NOT NULL,
+  `KP` varchar(2) COLLATE utf8_unicode_ci NOT NULL,
+  `Jenis` enum('NTS','NAS') COLLATE utf8_unicode_ci NOT NULL,
+  `WaktuBuat` date NOT NULL,
+  `WaktuValidasiDosen` date NOT NULL,
+  `WaktuValidasiAdmik` date NOT NULL,
+  `DosenPembuat` char(10) COLLATE utf8_unicode_ci NOT NULL,
+  `AdmikValidator` char(10) COLLATE utf8_unicode_ci NOT NULL,
+  `Status` enum('Daftar','ValidDosen','ValidAdmik','Invalid') COLLATE utf8_unicode_ci NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  PRIMARY KEY (`KodeNilai`),
+  KEY `nilai_dosenpembuat_foreign` (`DosenPembuat`),
+  CONSTRAINT `nilai_dosenpembuat_foreign` FOREIGN KEY (`DosenPembuat`) REFERENCES `Karyawan` (`NPK`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `Nilai`
+--
+
+LOCK TABLES `Nilai` WRITE;
+/*!40000 ALTER TABLE `Nilai` DISABLE KEYS */;
+INSERT INTO `Nilai` VALUES ('001600A104201510AA002','1600A10420151','A','NAS','2015-10-11','2015-11-18','2016-01-24','204027','','ValidAdmik','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001600A104201510AT001','1600A10420151','A','NTS','2015-10-11','2015-09-18','2016-01-24','204027','','ValidAdmik','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001600A104201520AA002','1600A10420152','A','NAS','2016-06-11','2016-06-28','2016-06-29','204027','','ValidAdmik','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001600A104201520AT001','1600A10420152','A','NTS','2016-04-28','2016-06-25','2016-06-26','204027','','ValidAdmik','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001600A104201520BA002','1600A10420152','B','NAS','2016-06-11','2016-06-28','2016-06-29','197030','','ValidAdmik','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001600A104201520BT001','1600A10420152','B','NTS','2016-04-28','2016-06-25','2016-06-26','204027','','ValidAdmik','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001604A031201520AA002','1604A03120152','A','NAS','2016-06-11','2016-06-28','2016-06-29','197030','','ValidAdmik','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001604A031201520AT001','1604A03120152','A','NTS','2016-04-28','2016-06-25','2016-06-26','197030','','ValidAdmik','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001604A032201510-A002','1604A03220151','-','NAS','2015-10-11','2015-11-18','2016-01-24','215027','','ValidAdmik','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001604A032201510-T001','1604A03220151','-','NTS','2015-10-11','2015-09-18','2016-01-24','215027','','ValidAdmik','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001604A032201520AA002','1604A03220152','A','NAS','2016-06-11','2016-06-28','2016-06-29','209345','','ValidAdmik','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001604A032201520AT001','1604A03220152','A','NTS','2016-04-28','2016-06-25','2016-06-26','209345','','ValidAdmik','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001604A033201520AA002','1604A03320152','A','NAS','2016-06-11','2016-06-28','2016-06-29','208020','','ValidAdmik','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001604A033201520AT001','1604A03320152','A','NTS','2016-04-28','2016-06-25','2016-06-26','208020','','ValidAdmik','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001604A033201520BA002','1604A03320152','B','NAS','2016-06-11','2016-06-28','2016-06-29','208020','','ValidAdmik','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001604A033201520BT001','1604A03320152','B','NTS','2016-04-28','2016-06-25','2016-06-26','208020','','ValidAdmik','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001604A055201510AA002','1604A05520151','A','NAS','2015-10-11','2015-11-18','2016-01-24','197030','','ValidAdmik','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001604A055201510AT001','1604A05520151','A','NTS','2015-10-11','2015-09-18','2016-01-24','197030','','ValidAdmik','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001604A055201520AA002','1604A05520152','A','NAS','2016-06-11','2016-06-28','2016-06-29','204027','','ValidAdmik','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001604A055201520AT001','1604A05520152','A','NTS','2016-04-28','2016-06-25','2016-06-26','204027','','ValidAdmik','0000-00-00 00:00:00','0000-00-00 00:00:00');
+/*!40000 ALTER TABLE `Nilai` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `NilaiMahasiswa`
+--
+
+DROP TABLE IF EXISTS `NilaiMahasiswa`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `NilaiMahasiswa` (
+  `KodeNilai` char(21) COLLATE utf8_unicode_ci NOT NULL,
+  `NRP` varchar(12) COLLATE utf8_unicode_ci NOT NULL,
+  `Nilai` smallint(6) NOT NULL,
+  `KodeNisbi` varchar(2) COLLATE utf8_unicode_ci NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  KEY `nilaimahasiswa_kodenilai_foreign` (`KodeNilai`),
+  KEY `nilaimahasiswa_nrp_foreign` (`NRP`),
+  CONSTRAINT `nilaimahasiswa_kodenilai_foreign` FOREIGN KEY (`KodeNilai`) REFERENCES `Nilai` (`KodeNilai`) ON DELETE CASCADE,
+  CONSTRAINT `nilaimahasiswa_nrp_foreign` FOREIGN KEY (`NRP`) REFERENCES `Mahasiswa` (`NRP`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `NilaiMahasiswa`
+--
+
+LOCK TABLES `NilaiMahasiswa` WRITE;
+/*!40000 ALTER TABLE `NilaiMahasiswa` DISABLE KEYS */;
+INSERT INTO `NilaiMahasiswa` VALUES ('001604A032201520AT001','6134021',73,'AB','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001604A032201520AT001','6134040',73,'AB','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001604A032201520AA002','6134021',83,'AB','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001604A032201520AA002','6134040',85,'AB','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001604A031201520AT001','6134059',100,'A','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001604A031201520AT001','6134111',100,'A','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001604A031201520AA002','6134059',100,'A','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001604A031201520AA002','6134111',90,'A','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001600A104201520AT001','6134059',77,'AB','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001600A104201520AT001','6134040',81,'AB','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001600A104201520AA002','6134059',81,'AB','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001600A104201520AA002','6134040',75,'AB','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001600A104201520BT001','6134111',80,'AB','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001600A104201520BT001','6134020',75,'AB','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001600A104201520BA002','6134111',80,'AB','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001600A104201520BA002','6134020',75,'AB','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001604A055201520AT001','6134021',90,'A','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001604A055201520AT001','6134059',70,'B','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001604A055201520AA002','6134021',70,'B','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001604A055201520AA002','6134059',70,'B','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001604A033201520AT001','6134004',80,'AB','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001604A033201520AT001','6134059',90,'A','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001604A033201520AA002','6134004',80,'AB','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001604A033201520AA002','6134059',90,'A','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001604A033201520BT001','6134108',80,'AB','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001604A033201520BT001','6134087',70,'B','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001604A033201520BA002','6134108',85,'A','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001604A033201520BA002','6134087',75,'AB','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001604A032201510-T001','6134059',90,'A','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001604A032201510-T001','6134111',80,'AB','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001604A032201510-A002','6134059',95,'A','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001604A032201510-A002','6134111',85,'A','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001600A104201510AT001','6134059',84,'A','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001600A104201510AT001','6134115',74,'AB','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001600A104201510AA002','6134059',82,'A','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001600A104201510AA002','6134115',83,'A','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001604A055201510AT001','6134111',73,'AB','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001604A055201510AT001','6134115',75,'AB','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001604A055201510AA002','6134111',75,'AB','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001604A055201510AA002','6134115',70,'B','0000-00-00 00:00:00','0000-00-00 00:00:00');
+/*!40000 ALTER TABLE `NilaiMahasiswa` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `NilaiPerubahan`
+--
+
+DROP TABLE IF EXISTS `NilaiPerubahan`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `NilaiPerubahan` (
+  `VersiUbah` smallint(6) NOT NULL,
+  `KodeMkBuka` varchar(15) COLLATE utf8_unicode_ci NOT NULL,
+  `KP` varchar(2) COLLATE utf8_unicode_ci NOT NULL,
+  `TglUbah` date NOT NULL,
+  `NoSurat` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
+  `TglSurat` date NOT NULL,
+  `NTSLama` smallint(6) NOT NULL,
+  `NASLama` smallint(6) NOT NULL,
+  `NisbiLama` varchar(2) COLLATE utf8_unicode_ci NOT NULL,
+  `NTSBaru` smallint(6) NOT NULL,
+  `NASBaru` smallint(6) NOT NULL,
+  `KodeNisbiBaru` varchar(2) COLLATE utf8_unicode_ci NOT NULL,
+  `Keterangan` text COLLATE utf8_unicode_ci NOT NULL,
+  `NRP` varchar(12) COLLATE utf8_unicode_ci NOT NULL,
+  `NPK` char(10) COLLATE utf8_unicode_ci NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  PRIMARY KEY (`VersiUbah`),
+  KEY `nilaiperubahan_kodemkbuka_foreign` (`KodeMkBuka`),
+  KEY `nilaiperubahan_nrp_foreign` (`NRP`),
+  KEY `nilaiperubahan_npk_foreign` (`NPK`),
+  CONSTRAINT `nilaiperubahan_kodemkbuka_foreign` FOREIGN KEY (`KodeMkBuka`) REFERENCES `MkBuka` (`KodeMkBuka`) ON DELETE CASCADE,
+  CONSTRAINT `nilaiperubahan_npk_foreign` FOREIGN KEY (`NPK`) REFERENCES `Karyawan` (`NPK`) ON DELETE CASCADE,
+  CONSTRAINT `nilaiperubahan_nrp_foreign` FOREIGN KEY (`NRP`) REFERENCES `Mahasiswa` (`NRP`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `NilaiPerubahan`
+--
+
+LOCK TABLES `NilaiPerubahan` WRITE;
+/*!40000 ALTER TABLE `NilaiPerubahan` DISABLE KEYS */;
+/*!40000 ALTER TABLE `NilaiPerubahan` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `SemesterAktif`
+--
+
+DROP TABLE IF EXISTS `SemesterAktif`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `SemesterAktif` (
+  `ThnAkademik` char(4) COLLATE utf8_unicode_ci NOT NULL,
+  `Semester` enum('Gasal','Genap','Pendek','Trimester3') COLLATE utf8_unicode_ci NOT NULL,
+  `GenerateBayar` enum('Y','N') COLLATE utf8_unicode_ci NOT NULL,
+  `TglAwalKuliah` date NOT NULL,
+  `TglAkhirKuliah` date NOT NULL,
+  `TglAwalLulus` date NOT NULL,
+  `TglAkhirLulus` date NOT NULL,
+  `TglPembagianKHS` date DEFAULT NULL,
+  `SudahProsesTilang` enum('Y','N') COLLATE utf8_unicode_ci NOT NULL,
+  `BatasInputNTS` date NOT NULL,
+  `BatasInputNAS` date NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  PRIMARY KEY (`ThnAkademik`,`Semester`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `SemesterAktif`
+--
+
+LOCK TABLES `SemesterAktif` WRITE;
+/*!40000 ALTER TABLE `SemesterAktif` DISABLE KEYS */;
+INSERT INTO `SemesterAktif` VALUES ('2015','Gasal','','2015-08-18','2015-12-04','2015-08-17','2016-05-12','0000-00-00','','2016-01-19','2016-01-19','0000-00-00 00:00:00','0000-00-00 00:00:00'),('2015','Genap','','2016-02-15','2016-06-03','2016-05-24','2016-08-12','0000-00-00','','2016-07-25','2016-07-25','0000-00-00 00:00:00','0000-00-00 00:00:00'),('2016','Gasal','','2016-08-15','2016-12-02','2016-08-19','2017-02-10','0000-00-00','','2016-11-20','2017-01-06','0000-00-00 00:00:00','0000-00-00 00:00:00');
+/*!40000 ALTER TABLE `SemesterAktif` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `User`
+--
+
+DROP TABLE IF EXISTS `User`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `User` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `email` varchar(35) COLLATE utf8_unicode_ci NOT NULL,
+  `password` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `status` int(11) NOT NULL,
+  `remember_token` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `user_email_unique` (`email`)
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `User`
+--
+
+LOCK TABLES `User` WRITE;
+/*!40000 ALTER TABLE `User` DISABLE KEYS */;
+INSERT INTO `User` VALUES (1,'dhiani@staff.ubaya.ac.id','dhiani',1,NULL,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(2,'prijambodo','prijambodo@staff.ubaya.ac.id',0,NULL,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(3,'susana@staff.ubaya.ac.id','susana',1,NULL,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(4,'mayalouk@staff.ubaya.ac.id','mayalouk',1,NULL,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(5,'ellysa@staff.ubaya.ac.id','ellysa',1,NULL,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(6,'andre@staff.ubaya.ac.id','andre',1,NULL,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(7,'daniel@staff.ubaya.ac.id','daniel',1,NULL,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(8,'monica@staff.ubaya.ac.id','monica',1,NULL,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(9,'ferdi@staff.ubaya.ac.id','ferdi',1,NULL,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(10,'lisana@staff.ubaya.ac.id','lisana',1,NULL,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(11,'s6134059@student.ubaya.ac.id','daiva',1,NULL,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(12,'s6134111@student.ubaya.ac.id','steven',1,NULL,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(13,'s6134115@student.ubaya.ac.id','aldo',1,NULL,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(14,'s6134087@student.ubaya.ac.id','ika',1,NULL,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(15,'s6134108@student.ubaya.ac.id','christine',1,NULL,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(16,'s6134030@student.ubaya.ac.id','aloysius',1,NULL,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(17,'s6134021@student.ubaya.ac.id','michael',1,NULL,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(18,'s6134040@student.ubaya.ac.id','christian',1,NULL,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(19,'s6134004@student.ubaya.ac.id','andreas',1,NULL,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(20,'s6134020@student.ubaya.ac.id','hadi',1,NULL,'0000-00-00 00:00:00','0000-00-00 00:00:00');
+/*!40000 ALTER TABLE `User` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `migrations`
+--
+
+DROP TABLE IF EXISTS `migrations`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `migrations` (
+  `migration` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `batch` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `migrations`
+--
+
+LOCK TABLES `migrations` WRITE;
+/*!40000 ALTER TABLE `migrations` DISABLE KEYS */;
+INSERT INTO `migrations` VALUES ('2016_08_02_161107_create_semester_aktifs_table',1),('2016_08_30_000000_create_users_table',1),('2016_08_30_100000_create_password_resets_table',1),('2016_08_31_045213_create_mahasiswas_table',1),('2016_08_31_045221_create_karyawans_table',1),('2016_08_31_045236_create_mata__kuliahs_table',1),('2016_08_31_045247_create_mata__kuliah__bukas_table',1),('2016_08_31_045258_create_mahasiswa__ambil__mata__kuliahs_table',1),('2016_08_31_050108_create_jenis__nilais_table',1),('2016_08_31_050213_create_mahasiswa__punya__nilais_table',1),('2016_08_31_050228_create_nilai__perubahans_table',1),('2016_09_01_033318_create_dosen_ajar_mks_table',1),('2016_11_02_161148_create_berita_acaras_table',1),('2016_11_02_161219_create_berita_acara_mhs_table',1);
+/*!40000 ALTER TABLE `migrations` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `password_resets`
+--
+
+DROP TABLE IF EXISTS `password_resets`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `password_resets` (
+  `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `token` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  KEY `password_resets_email_index` (`email`),
+  KEY `password_resets_token_index` (`token`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `password_resets`
+--
+
+LOCK TABLES `password_resets` WRITE;
+/*!40000 ALTER TABLE `password_resets` DISABLE KEYS */;
+/*!40000 ALTER TABLE `password_resets` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2016-11-19 21:43:30
+CREATE DATABASE  IF NOT EXISTS `RekapNilai` /*!40100 DEFAULT CHARACTER SET utf8 */;
+USE `RekapNilai`;
+-- MySQL dump 10.13  Distrib 5.7.9, for Win64 (x86_64)
+--
+-- Host: localhost    Database: RekapNilai
+-- ------------------------------------------------------
+-- Server version	5.7.12-log
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `MhsAmbilMk`
+--
+
+DROP TABLE IF EXISTS `MhsAmbilMk`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `MhsAmbilMk` (
+  `NRP` varchar(12) COLLATE utf8_unicode_ci NOT NULL,
+  `KodeMkBuka` varchar(15) COLLATE utf8_unicode_ci NOT NULL,
+  `KP` varchar(2) COLLATE utf8_unicode_ci NOT NULL,
+  `NTS` smallint(6) NOT NULL,
+  `NAS` smallint(6) NOT NULL,
+  `NA` double(6,3) NOT NULL,
+  `KodeNisbi` varchar(2) COLLATE utf8_unicode_ci NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `MhsAmbilMk`
+--
+
+LOCK TABLES `MhsAmbilMk` WRITE;
+/*!40000 ALTER TABLE `MhsAmbilMk` DISABLE KEYS */;
+INSERT INTO `MhsAmbilMk` VALUES ('6134021','1604A03220152','A',73,83,79.000,'AB','0000-00-00 00:00:00','0000-00-00 00:00:00'),('6134040','1604A03220152','A',73,85,80.200,'AB','0000-00-00 00:00:00','0000-00-00 00:00:00'),('6134059','1604A03120152','A',100,100,100.000,'A','0000-00-00 00:00:00','0000-00-00 00:00:00'),('6134111','1604A03120152','A',100,90,94.000,'A','0000-00-00 00:00:00','0000-00-00 00:00:00'),('6134059','1600A10420152','A',77,81,79.100,'AB','0000-00-00 00:00:00','0000-00-00 00:00:00'),('6134040','1600A10420152','A',81,75,76.900,'AB','0000-00-00 00:00:00','0000-00-00 00:00:00'),('6134111','1600A10420152','B',80,80,80.000,'AB','0000-00-00 00:00:00','0000-00-00 00:00:00'),('6134020','1600A10420152','B',75,75,75.000,'AB','0000-00-00 00:00:00','0000-00-00 00:00:00'),('6134021','1604A05520152','A',90,70,78.000,'AB','0000-00-00 00:00:00','0000-00-00 00:00:00'),('6134059','1604A05520152','A',70,70,70.000,'B','0000-00-00 00:00:00','0000-00-00 00:00:00'),('6134004','1604A03320152','A',80,80,80.000,'AB','0000-00-00 00:00:00','0000-00-00 00:00:00'),('6134059','1604A03320152','A',90,90,90.000,'A','0000-00-00 00:00:00','0000-00-00 00:00:00'),('6134108','1604A03320152','B',80,85,83.000,'A','0000-00-00 00:00:00','0000-00-00 00:00:00'),('6134087','1604A03320152','B',70,75,73.000,'AB','0000-00-00 00:00:00','0000-00-00 00:00:00'),('6134059','1604A03220151','-',90,95,93.000,'A','0000-00-00 00:00:00','0000-00-00 00:00:00'),('6134111','1604A03220151','-',80,85,83.000,'A','0000-00-00 00:00:00','0000-00-00 00:00:00'),('6134059','1600A10420151','A',84,82,82.300,'A','0000-00-00 00:00:00','0000-00-00 00:00:00'),('6134115','1600A10420151','A',74,83,79.020,'AB','0000-00-00 00:00:00','0000-00-00 00:00:00'),('6134111','1604A05520151','A',73,75,74.200,'AB','0000-00-00 00:00:00','0000-00-00 00:00:00'),('6134115','1604A05520151','A',75,70,72.000,'B','0000-00-00 00:00:00','0000-00-00 00:00:00'),('6134111','1604A01120161','A',6,0,2.400,'E','2016-11-16 22:02:42','2016-11-16 22:02:42'),('6134004','1604A01120161','A',0,0,0.000,'E','2016-11-16 22:02:42','2016-11-16 22:02:42'),('6134020','1604A01120161','A',0,85,51.000,'D','2016-11-16 22:02:42','2016-11-16 22:02:42'),('6134115','1604A01120161','A',78,0,31.200,'E','2016-11-16 22:02:42','2016-11-16 22:02:42'),('6134059','1604A01120161','A',96,90,92.400,'A','2016-11-16 22:02:42','2016-11-16 22:02:42'),('6134040','1604A01120161','B',86,30,52.400,'D','2016-11-16 23:40:36','2016-11-16 23:40:36'),('6134108','1604A01120161','B',80,70,74.000,'AB','2016-11-16 23:40:37','2016-11-16 23:40:37'),('6134087','1604A01120161','B',83,82,82.400,'A','2016-11-16 23:40:37','2016-11-16 23:40:37'),('6134021','1604A01120161','B',85,93,89.800,'A','2016-11-16 23:40:37','2016-11-16 23:40:37'),('6134030','1604A01120161','B',84,96,91.200,'A','2016-11-16 23:40:37','2016-11-16 23:40:37'),('6134111','1600A10420161','B',70,50,58.000,'C','2016-11-16 23:56:17','2016-11-16 23:56:17'),('6134030','1600A10420161','B',83,85,84.200,'A','2016-11-16 23:56:17','2016-11-16 23:56:17'),('6134059','1600A10420161','B',94,100,97.600,'A','2016-11-16 23:56:17','2016-11-16 23:56:17'),('6134020','1600A10420161','D',0,80,0.000,'-','2016-11-18 20:02:59','2016-11-18 20:02:59'),('6134021','1600A10420161','D',0,80,0.000,'-','2016-11-18 20:02:59','2016-11-18 20:02:59');
+/*!40000 ALTER TABLE `MhsAmbilMk` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `Nilai`
+--
+
+DROP TABLE IF EXISTS `Nilai`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `Nilai` (
+  `KodeNilai` char(21) COLLATE utf8_unicode_ci NOT NULL,
+  `KodeMkBuka` varchar(15) COLLATE utf8_unicode_ci NOT NULL,
+  `KP` varchar(2) COLLATE utf8_unicode_ci NOT NULL,
+  `Jenis` enum('QuizUTS','QuizUAS','TugasUTS','TugasUAS','ProyekUTS','ProyekUAS','KeaktifanUTS','KeaktifanUAS','UTS','UAS') CHARACTER SET utf8 NOT NULL,
+  `Bobot` double(6,3) NOT NULL,
+  `WaktuBuat` date NOT NULL,
+  `WaktuValidasiDosen` date NOT NULL,
+  `WaktuValidasiAdmik` date NOT NULL,
+  `DosenPembuat` char(10) COLLATE utf8_unicode_ci NOT NULL,
+  `AdmikValidator` char(10) COLLATE utf8_unicode_ci NOT NULL,
+  `Status` enum('BelumInput','Daftar','TelahDiKalkulasi','SiapUpload','TelahDiUpload') COLLATE utf8_unicode_ci NOT NULL,
+  `Syarat` smallint(6) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  PRIMARY KEY (`KodeNilai`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `Nilai`
+--
+
+LOCK TABLES `Nilai` WRITE;
+/*!40000 ALTER TABLE `Nilai` DISABLE KEYS */;
+INSERT INTO `Nilai` VALUES ('001600A104201510AA004','1600A10420151','A','UAS',100.000,'2015-10-11','2015-10-12','0000-00-00','204027','','TelahDiUpload',1,'0000-00-00 00:00:00','0000-00-00 00:00:00'),('001600A104201510AT003','1600A10420151','A','UTS',100.000,'2015-10-11','2015-10-12','0000-00-00','204027','','TelahDiUpload',1,'0000-00-00 00:00:00','0000-00-00 00:00:00'),('001600A104201520AA004','1600A10420152','A','UTS',70.000,'2016-04-25','2016-04-26','0000-00-00','204027','','TelahDiUpload',1,'0000-00-00 00:00:00','0000-00-00 00:00:00'),('001600A104201520AA006','1600A10420152','A','UAS',70.000,'2016-06-08','2016-06-09','0000-00-00','204027','','TelahDiUpload',1,'0000-00-00 00:00:00','0000-00-00 00:00:00'),('001600A104201520AT003','1600A10420152','A','QuizUTS',30.000,'2016-04-25','2016-04-26','0000-00-00','204027','','TelahDiUpload',1,'0000-00-00 00:00:00','0000-00-00 00:00:00'),('001600A104201520AT005','1600A10420152','A','QuizUAS',30.000,'2016-06-08','2016-06-09','0000-00-00','204027','','TelahDiUpload',1,'0000-00-00 00:00:00','0000-00-00 00:00:00'),('001600A104201520BA004','1600A10420152','B','UTS',70.000,'2016-04-25','2016-04-26','0000-00-00','197030','','TelahDiUpload',1,'0000-00-00 00:00:00','0000-00-00 00:00:00'),('001600A104201520BA006','1600A10420152','B','UAS',70.000,'2016-06-08','2016-06-09','0000-00-00','197030','','TelahDiUpload',1,'0000-00-00 00:00:00','0000-00-00 00:00:00'),('001600A104201520BT003','1600A10420152','B','QuizUTS',30.000,'2016-04-25','2016-04-26','0000-00-00','204027','','TelahDiUpload',1,'0000-00-00 00:00:00','0000-00-00 00:00:00'),('001600A104201520BT005','1600A10420152','B','QuizUAS',30.000,'2016-06-08','2016-06-09','0000-00-00','204027','','TelahDiUpload',1,'0000-00-00 00:00:00','0000-00-00 00:00:00'),('001600A104201610AA001','1600A10420161','A','UAS',100.000,'2016-11-06','0000-00-00','0000-00-00','204027','','Daftar',1,'2016-11-05 19:18:35','2016-11-05 19:18:35'),('001600A104201610AT001','1600A10420161','A','QuizUTS',40.000,'2016-11-04','0000-00-00','0000-00-00','204027','','Daftar',1,'2016-11-03 18:59:38','2016-11-03 18:59:38'),('001600A104201610AT002','1600A10420161','A','UTS',60.000,'2016-11-17','0000-00-00','0000-00-00','204027','','Daftar',1,'2016-11-16 23:55:08','2016-11-16 23:55:08'),('001600A104201610BA001','1600A10420161','B','UAS',100.000,'2016-11-06','0000-00-00','0000-00-00','204027','','TelahDiKalkulasi',1,'2016-11-05 19:19:23','2016-11-05 19:19:23'),('001600A104201610BT001','1600A10420161','B','QuizUTS',40.000,'2016-11-04','0000-00-00','0000-00-00','204027','','TelahDiKalkulasi',1,'2016-11-03 18:59:38','2016-11-03 18:59:38'),('001600A104201610BT002','1600A10420161','B','UTS',60.000,'2016-11-17','0000-00-00','0000-00-00','204027','','TelahDiKalkulasi',1,'2016-11-16 23:55:08','2016-11-16 23:55:08'),('001600A104201610CA001','1600A10420161','C','UAS',100.000,'2016-11-19','0000-00-00','0000-00-00','204027','','Daftar',1,'2016-11-18 18:16:06','2016-11-18 18:16:06'),('001600A104201610CT001','1600A10420161','C','QuizUTS',40.000,'2016-11-04','0000-00-00','0000-00-00','204027','','Daftar',1,'2016-11-03 18:59:38','2016-11-03 18:59:38'),('001600A104201610CT002','1600A10420161','C','UTS',60.000,'2016-11-17','0000-00-00','0000-00-00','204027','','Daftar',1,'2016-11-16 23:55:08','2016-11-16 23:55:08'),('001600A104201610DA001','1600A10420161','D','UAS',100.000,'2016-11-19','0000-00-00','0000-00-00','204027','','SiapUpload',1,'2016-11-18 20:02:29','2016-11-18 20:02:29'),('001600A104201610DT001','1600A10420161','D','QuizUTS',40.000,'2016-11-04','0000-00-00','0000-00-00','204027','','Daftar',1,'2016-11-03 18:59:38','2016-11-03 18:59:38'),('001600A104201610DT002','1600A10420161','D','UTS',60.000,'2016-11-17','0000-00-00','0000-00-00','204027','','Daftar',1,'2016-11-16 23:55:08','2016-11-16 23:55:08'),('001604A011201610AA001','1604A01120161','A','UAS',70.000,'2016-11-07','0000-00-00','0000-00-00','197030','','TelahDiUpload',1,'2016-11-07 02:32:26','2016-11-07 02:32:26'),('001604A011201610AA002','1604A01120161','A','QuizUAS',30.000,'2016-11-11','0000-00-00','0000-00-00','197030','','TelahDiUpload',1,'2016-11-10 18:38:11','2016-11-10 18:38:11'),('001604A011201610AT001','1604A01120161','A','QuizUTS',30.000,'2016-11-05','0000-00-00','0000-00-00','197030','','TelahDiUpload',0,'2016-11-05 07:10:42','2016-11-05 07:10:42'),('001604A011201610AT002','1604A01120161','A','QuizUTS',20.000,'2016-11-05','0000-00-00','0000-00-00','197030','','TelahDiUpload',1,'2016-11-05 07:11:48','2016-11-05 07:11:48'),('001604A011201610AT003','1604A01120161','A','QuizUTS',10.000,'2016-11-05','0000-00-00','0000-00-00','197030','','TelahDiUpload',1,'2016-11-05 07:12:38','2016-11-05 07:12:38'),('001604A011201610AT004','1604A01120161','A','QuizUTS',70.000,'2016-11-08','0000-00-00','0000-00-00','197030','','TelahDiUpload',0,'2016-11-07 18:25:04','2016-11-07 18:25:04'),('001604A011201610AT005','1604A01120161','A','UTS',70.000,'2016-11-08','0000-00-00','0000-00-00','197030','','TelahDiUpload',1,'2016-11-07 18:25:47','2016-11-07 18:25:47'),('001604A011201610BA001','1604A01120161','B','QuizUAS',30.000,'2016-11-11','0000-00-00','0000-00-00','197030','','SiapUpload',1,'2016-11-10 18:38:11','2016-11-10 18:38:11'),('001604A011201610BA002','1604A01120161','B','UAS',70.000,'2016-11-17','0000-00-00','0000-00-00','197030','','SiapUpload',1,'2016-11-16 23:33:16','2016-11-16 23:33:16'),('001604A011201610BT001','1604A01120161','B','QuizUTS',30.000,'2016-11-05','0000-00-00','0000-00-00','197030','','TelahDiUpload',0,'2016-11-05 07:10:42','2016-11-05 07:10:42'),('001604A011201610BT002','1604A01120161','B','QuizUTS',40.000,'2016-11-05','0000-00-00','0000-00-00','197030','','TelahDiUpload',1,'2016-11-05 07:11:48','2016-11-05 07:11:48'),('001604A011201610BT003','1604A01120161','B','QuizUTS',0.000,'2016-11-05','0000-00-00','0000-00-00','197030','','TelahDiUpload',0,'2016-11-05 09:20:49','2016-11-05 09:20:49'),('001604A011201610BT004','1604A01120161','B','UTS',60.000,'2016-11-06','0000-00-00','0000-00-00','197030','','TelahDiUpload',1,'2016-11-05 19:13:45','2016-11-05 19:13:45'),('001604A021201610-A001','1604A02120161','-','UAS',100.000,'2016-11-19','0000-00-00','0000-00-00','204027','','Daftar',1,'2016-11-18 21:15:11','2016-11-18 21:15:11'),('001604A021201610-T001','1604A02120161','-','QuizUTS',20.000,'2016-11-17','0000-00-00','0000-00-00','204027','','BelumInput',1,'2016-11-16 22:06:21','2016-11-16 22:06:21'),('001604A031201520AA004','1604A03120152','A','UAS',100.000,'2016-06-08','2016-06-09','0000-00-00','197030','','TelahDiUpload',1,'0000-00-00 00:00:00','0000-00-00 00:00:00'),('001604A031201520AT003','1604A03120152','A','UTS',100.000,'2016-04-25','2016-04-26','0000-00-00','197030','','TelahDiUpload',1,'0000-00-00 00:00:00','0000-00-00 00:00:00'),('001604A032201510-A004','1604A03220151','-','UAS',100.000,'2015-10-11','2015-10-12','0000-00-00','215027','','TelahDiUpload',1,'0000-00-00 00:00:00','0000-00-00 00:00:00'),('001604A032201510-T003','1604A03220151','-','UTS',100.000,'2015-10-11','2015-10-12','0000-00-00','215027','','TelahDiUpload',1,'0000-00-00 00:00:00','0000-00-00 00:00:00'),('001604A032201520AA004','1604A03220152','A','UTS',70.000,'2016-04-25','2016-04-26','0000-00-00','209345','','TelahDiUpload',1,'0000-00-00 00:00:00','0000-00-00 00:00:00'),('001604A032201520AA005','1604A03220152','A','ProyekUAS',0.000,'2016-06-08','2016-06-09','0000-00-00','209345','','TelahDiUpload',1,'0000-00-00 00:00:00','0000-00-00 00:00:00'),('001604A032201520AA006','1604A03220152','A','UAS',60.000,'2016-06-08','2016-06-09','0000-00-00','209345','','TelahDiUpload',1,'0000-00-00 00:00:00','0000-00-00 00:00:00'),('001604A032201520AT003','1604A03220152','A','QuizUTS',30.000,'2016-04-25','2016-04-26','0000-00-00','209345','','TelahDiUpload',1,'0000-00-00 00:00:00','0000-00-00 00:00:00'),('001604A033201520AA004','1604A03320152','A','ProyekUAS',100.000,'2016-06-08','2016-06-09','0000-00-00','208020','','TelahDiUpload',1,'0000-00-00 00:00:00','0000-00-00 00:00:00'),('001604A033201520AT003','1604A03320152','A','ProyekUTS',100.000,'2016-04-25','2016-04-26','0000-00-00','208020','','TelahDiUpload',1,'0000-00-00 00:00:00','0000-00-00 00:00:00'),('001604A033201520BA004','1604A03320152','B','ProyekUAS',100.000,'2016-06-08','2016-06-09','0000-00-00','208020','','TelahDiUpload',1,'0000-00-00 00:00:00','0000-00-00 00:00:00'),('001604A033201520BT003','1604A03320152','B','ProyekUTS',100.000,'2016-04-25','2016-04-26','0000-00-00','208020','','TelahDiUpload',1,'0000-00-00 00:00:00','0000-00-00 00:00:00'),('001604A055201510AA004','1604A05520151','A','UAS',100.000,'2015-10-11','2015-10-12','0000-00-00','197030','','TelahDiUpload',1,'0000-00-00 00:00:00','0000-00-00 00:00:00'),('001604A055201510AT003','1604A05520151','A','UTS',100.000,'2015-10-11','2015-10-12','0000-00-00','197030','','TelahDiUpload',1,'0000-00-00 00:00:00','0000-00-00 00:00:00'),('001604A055201520AA004','1604A05520152','A','UAS',100.000,'2016-06-08','2016-06-09','0000-00-00','204027','','TelahDiUpload',1,'0000-00-00 00:00:00','0000-00-00 00:00:00'),('001604A055201520AT003','1604A05520152','A','UTS',100.000,'2016-04-25','2016-04-26','0000-00-00','204027','','TelahDiUpload',1,'0000-00-00 00:00:00','0000-00-00 00:00:00'),('001604A055201610AA001','1604A05520161','A','QuizUAS',40.000,'2016-11-06','0000-00-00','0000-00-00','202017','','Daftar',0,'2016-11-06 08:39:06','2016-11-06 08:39:06'),('001604A055201610AT001','1604A05520161','A','QuizUTS',40.000,'2016-11-06','0000-00-00','0000-00-00','202017','','BelumInput',0,'2016-11-06 08:38:50','2016-11-06 08:38:50'),('001607A021201610AA001','1607A02120161','A','UAS',100.000,'2016-11-06','0000-00-00','0000-00-00','209344','','BelumInput',1,'2016-11-06 08:15:58','2016-11-06 08:15:58'),('001607A021201610AT001','1607A02120161','A','UTS',100.000,'2016-11-06','0000-00-00','0000-00-00','209344','','Daftar',1,'2016-11-06 07:35:44','2016-11-06 07:35:44'),('001607A021201610BA001','1607A02120161','B','UAS',100.000,'2016-11-06','0000-00-00','0000-00-00','209344','','BelumInput',1,'2016-11-06 08:15:58','2016-11-06 08:15:58'),('001607A021201610BT001','1607A02120161','B','UTS',100.000,'2016-11-06','0000-00-00','0000-00-00','209344','','BelumInput',1,'2016-11-06 07:35:45','2016-11-06 07:35:45');
+/*!40000 ALTER TABLE `Nilai` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `NilaiMahasiswa`
+--
+
+DROP TABLE IF EXISTS `NilaiMahasiswa`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `NilaiMahasiswa` (
+  `KodeNilai` char(21) COLLATE utf8_unicode_ci NOT NULL,
+  `NRP` varchar(12) COLLATE utf8_unicode_ci NOT NULL,
+  `Nilai` smallint(6) NOT NULL,
+  `KodeNisbi` varchar(2) COLLATE utf8_unicode_ci NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  KEY `nilaimahasiswa_kodenilai_foreign` (`KodeNilai`),
+  CONSTRAINT `nilaimahasiswa_kodenilai_foreign` FOREIGN KEY (`KodeNilai`) REFERENCES `Nilai` (`KodeNilai`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `NilaiMahasiswa`
+--
+
+LOCK TABLES `NilaiMahasiswa` WRITE;
+/*!40000 ALTER TABLE `NilaiMahasiswa` DISABLE KEYS */;
+INSERT INTO `NilaiMahasiswa` VALUES ('001604A032201520AT003','6134021',80,'AB','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001604A032201520AT003','6134040',80,'AB','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001604A032201520AA004','6134021',70,'B','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001604A032201520AA004','6134040',70,'B','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001604A032201520AA005','6134021',80,'AB','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001604A032201520AA005','6134040',85,'A','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001604A032201520AA006','6134021',85,'A','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001604A032201520AA006','6134040',85,'A','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001604A031201520AT003','6134059',100,'A','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001604A031201520AT003','6134111',100,'A','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001604A031201520AA004','6134059',100,'A','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001604A031201520AA004','6134111',90,'A','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001600A104201520AT003','6134059',70,'B','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001600A104201520AT003','6134040',70,'B','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001600A104201520AA004','6134059',80,'AB','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001600A104201520AA004','6134040',85,'A','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001600A104201520AT005','6134059',70,'B','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001600A104201520AT005','6134040',85,'A','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001600A104201520AA006','6134059',85,'A','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001600A104201520AA006','6134040',70,'B','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001600A104201520BT003','6134111',80,'AB','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001600A104201520BT003','6134020',75,'AB','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001600A104201520BA004','6134111',80,'AB','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001600A104201520BA004','6134020',75,'AB','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001600A104201520BT005','6134111',80,'AB','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001600A104201520BT005','6134020',75,'AB','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001600A104201520BA006','6134111',80,'AB','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001600A104201520BA006','6134020',75,'AB','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001604A055201520AT003','6134021',90,'A','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001604A055201520AT003','6134059',70,'B','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001604A055201520AA004','6134021',70,'B','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001604A055201520AA004','6134059',70,'B','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001604A033201520AT003','6134004',80,'AB','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001604A033201520AT003','6134059',90,'A','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001604A033201520AA004','6134004',80,'AB','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001604A033201520AA004','6134059',90,'A','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001604A033201520BT003','6134108',80,'AB','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001604A033201520BT003','6134087',70,'B','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001604A033201520BA004','6134108',85,'A','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001604A033201520BA004','6134087',75,'AB','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001604A032201510-T003','6134059',90,'A','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001604A032201510-T003','6134111',80,'AB','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001604A032201510-A004','6134059',95,'A','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001604A032201510-A004','6134111',85,'A','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001600A104201510AT003','6134059',80,'AB','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001600A104201510AT003','6134115',70,'B','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001600A104201510AA004','6134059',85,'A','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001600A104201510AA004','6134115',75,'AB','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001604A055201510AT003','6134111',73,'AB','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001604A055201510AT003','6134115',75,'AB','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001604A055201510AA004','6134111',75,'AB','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001604A055201510AA004','6134115',70,'B','0000-00-00 00:00:00','0000-00-00 00:00:00'),('001607A021201610AT001','6134020',100,'A','2016-11-06 08:12:22','2016-11-06 08:12:22'),('001607A021201610AT001','6134059',100,'A','2016-11-06 08:12:22','2016-11-06 08:12:22'),('001607A021201610AT001','6134111',50,'D','2016-11-06 08:12:22','2016-11-06 08:12:22'),('001604A055201610AA001','6134004',40,'D','2016-11-06 08:44:17','2016-11-06 08:44:17'),('001604A055201610AA001','6134021',80,'AB','2016-11-06 08:44:17','2016-11-06 08:44:17'),('001604A055201610AA001','6134040',50,'D','2016-11-06 08:44:17','2016-11-06 08:44:17'),('001604A011201610AT005','6134059',100,'A','2016-11-14 20:27:02','2016-11-14 20:27:02'),('001604A011201610AT005','6134115',85,'AB','2016-11-14 20:27:02','2016-11-14 20:27:02'),('001604A011201610AT005','6134111',0,'E','2016-11-14 20:27:02','2016-11-14 20:27:02'),('001604A011201610AT002','6134004',75,'AB','2016-11-15 22:31:00','2016-11-15 22:31:00'),('001604A011201610AT002','6134020',80,'AB','2016-11-15 22:31:00','2016-11-15 22:31:00'),('001604A011201610AT002','6134059',85,'A','2016-11-15 22:31:00','2016-11-15 22:31:00'),('001604A011201610AT002','6134111',20,'E','2016-11-15 22:31:00','2016-11-15 22:31:00'),('001604A011201610AT002','6134115',50,'D','2016-11-15 22:31:00','2016-11-15 22:31:00'),('001604A011201610AT003','6134004',70,'B','2016-11-15 22:31:19','2016-11-15 22:31:19'),('001604A011201610AT003','6134020',85,'A','2016-11-15 22:31:19','2016-11-15 22:31:19'),('001604A011201610AT003','6134059',90,'A','2016-11-15 22:31:19','2016-11-15 22:31:19'),('001604A011201610AT003','6134111',20,'E','2016-11-15 22:31:19','2016-11-15 22:31:19'),('001604A011201610AT003','6134115',85,'A','2016-11-15 22:31:19','2016-11-15 22:31:19'),('001604A011201610AA001','6134020',85,'A','2016-11-15 22:31:57','2016-11-15 22:31:57'),('001604A011201610AA001','6134059',90,'A','2016-11-15 22:31:57','2016-11-15 22:31:57'),('001604A011201610AA002','6134004',80,'AB','2016-11-15 22:32:16','2016-11-15 22:32:16'),('001604A011201610AA002','6134020',85,'A','2016-11-15 22:32:16','2016-11-15 22:32:16'),('001604A011201610AA002','6134059',90,'A','2016-11-15 22:32:16','2016-11-15 22:32:16'),('001604A011201610AA002','6134111',70,'B','2016-11-15 22:32:16','2016-11-15 22:32:16'),('001604A011201610AA002','6134115',55,'C','2016-11-15 22:32:16','2016-11-15 22:32:16'),('001604A011201610BA001','6134021',100,'A','2016-11-16 23:33:43','2016-11-16 23:33:43'),('001604A011201610BA001','6134030',100,'A','2016-11-16 23:33:43','2016-11-16 23:33:43'),('001604A011201610BA001','6134040',40,'D','2016-11-16 23:33:44','2016-11-16 23:33:44'),('001604A011201610BA001','6134087',85,'A','2016-11-16 23:33:44','2016-11-16 23:33:44'),('001604A011201610BA001','6134108',70,'B','2016-11-16 23:33:44','2016-11-16 23:33:44'),('001604A011201610BA002','6134021',90,'A','2016-11-16 23:34:01','2016-11-16 23:34:01'),('001604A011201610BA002','6134030',94,'A','2016-11-16 23:34:01','2016-11-16 23:34:01'),('001604A011201610BA002','6134040',25,'E','2016-11-16 23:34:01','2016-11-16 23:34:01'),('001604A011201610BA002','6134087',80,'AB','2016-11-16 23:34:01','2016-11-16 23:34:01'),('001604A011201610BA002','6134108',70,'B','2016-11-16 23:34:01','2016-11-16 23:34:01'),('001604A011201610BT002','6134021',85,'A','2016-11-16 23:34:14','2016-11-16 23:34:14'),('001604A011201610BT002','6134030',90,'A','2016-11-16 23:34:15','2016-11-16 23:34:15'),('001604A011201610BT002','6134040',80,'AB','2016-11-16 23:34:15','2016-11-16 23:34:15'),('001604A011201610BT002','6134087',80,'AB','2016-11-16 23:34:15','2016-11-16 23:34:15'),('001604A011201610BT002','6134108',80,'AB','2016-11-16 23:34:15','2016-11-16 23:34:15'),('001604A011201610BT004','6134021',85,'A','2016-11-16 23:34:32','2016-11-16 23:34:32'),('001604A011201610BT004','6134030',80,'AB','2016-11-16 23:34:32','2016-11-16 23:34:32'),('001604A011201610BT004','6134040',90,'A','2016-11-16 23:34:32','2016-11-16 23:34:32'),('001604A011201610BT004','6134087',85,'A','2016-11-16 23:34:32','2016-11-16 23:34:32'),('001604A011201610BT004','6134108',80,'AB','2016-11-16 23:34:32','2016-11-16 23:34:32'),('001600A104201610BT001','6134030',80,'AB','2016-11-16 23:54:25','2016-11-16 23:54:25'),('001600A104201610BT001','6134059',85,'A','2016-11-16 23:54:25','2016-11-16 23:54:25'),('001600A104201610BT001','6134111',70,'B','2016-11-16 23:54:25','2016-11-16 23:54:25'),('001600A104201610BT002','6134030',85,'A','2016-11-16 23:55:27','2016-11-16 23:55:27'),('001600A104201610BT002','6134059',100,'A','2016-11-16 23:55:27','2016-11-16 23:55:27'),('001600A104201610BT002','6134111',70,'B','2016-11-16 23:55:27','2016-11-16 23:55:27'),('001600A104201610AA001','6134004',80,'AB','2016-11-18 18:16:39','2016-11-18 18:16:39'),('001600A104201610AA001','6134087',85,'A','2016-11-18 18:16:39','2016-11-18 18:16:39'),('001600A104201610AT001','6134004',100,'A','2016-11-18 18:16:48','2016-11-18 18:16:48'),('001600A104201610AT001','6134087',100,'A','2016-11-18 18:16:48','2016-11-18 18:16:48'),('001600A104201610AT002','6134004',70,'B','2016-11-18 18:16:55','2016-11-18 18:16:55'),('001600A104201610AT002','6134087',80,'AB','2016-11-18 18:16:55','2016-11-18 18:16:55'),('001600A104201610CA001','6134040',40,'D','2016-11-18 18:17:08','2016-11-18 18:17:08'),('001600A104201610CA001','6134108',80,'AB','2016-11-18 18:17:08','2016-11-18 18:17:08'),('001600A104201610CT001','6134040',80,'AB','2016-11-18 18:17:19','2016-11-18 18:17:19'),('001600A104201610CT001','6134108',85,'A','2016-11-18 18:17:19','2016-11-18 18:17:19'),('001600A104201610CT002','6134040',70,'B','2016-11-18 18:17:30','2016-11-18 18:17:30'),('001600A104201610CT002','6134108',70,'B','2016-11-18 18:17:30','2016-11-18 18:17:30'),('001600A104201610BA001','6134030',85,'A','2016-11-18 20:01:41','2016-11-18 20:01:41'),('001600A104201610BA001','6134059',100,'A','2016-11-18 20:01:41','2016-11-18 20:01:41'),('001600A104201610BA001','6134111',50,'D','2016-11-18 20:01:41','2016-11-18 20:01:41'),('001600A104201610DA001','6134020',80,'AB','2016-11-18 20:02:42','2016-11-18 20:02:42'),('001600A104201610DA001','6134021',80,'AB','2016-11-18 20:02:42','2016-11-18 20:02:42'),('001600A104201610DT001','6134020',85,'A','2016-11-18 20:03:17','2016-11-18 20:03:17'),('001600A104201610DT001','6134021',80,'AB','2016-11-18 20:03:17','2016-11-18 20:03:17'),('001600A104201610DT002','6134020',85,'A','2016-11-18 20:03:25','2016-11-18 20:03:25'),('001600A104201610DT002','6134021',80,'AB','2016-11-18 20:03:25','2016-11-18 20:03:25'),('001604A021201610-A001','6134040',50,'D','2016-11-18 21:15:34','2016-11-18 21:15:34'),('001604A021201610-A001','6134059',98,'A','2016-11-18 21:15:34','2016-11-18 21:15:34'),('001604A021201610-A001','6134087',95,'A','2016-11-18 21:15:34','2016-11-18 21:15:34'),('001604A021201610-A001','6134108',85,'A','2016-11-18 21:15:34','2016-11-18 21:15:34'),('001604A021201610-A001','6134111',65,'BC','2016-11-18 21:15:34','2016-11-18 21:15:34'),('001604A021201610-A001','6134115',90,'A','2016-11-18 21:15:34','2016-11-18 21:15:34');
+/*!40000 ALTER TABLE `NilaiMahasiswa` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `NilaiPerubahan`
+--
+
+DROP TABLE IF EXISTS `NilaiPerubahan`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `NilaiPerubahan` (
+  `VersiUbah` bigint(20) NOT NULL,
+  `KodeMkBuka` varchar(15) COLLATE utf8_unicode_ci NOT NULL,
+  `KP` varchar(2) COLLATE utf8_unicode_ci NOT NULL,
+  `TglUbah` date NOT NULL,
+  `NoSurat` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
+  `TglSurat` date NOT NULL,
+  `NilaiLama` smallint(6) NOT NULL,
+  `NilaiBaru` smallint(6) NOT NULL,
+  `KodeNilai` char(21) COLLATE utf8_unicode_ci NOT NULL,
+  `KodeNisbiLama` varchar(2) COLLATE utf8_unicode_ci NOT NULL,
+  `KodeNisbiBaru` varchar(2) COLLATE utf8_unicode_ci NOT NULL,
+  `Keterangan` text COLLATE utf8_unicode_ci NOT NULL,
+  `NRP` varchar(12) COLLATE utf8_unicode_ci NOT NULL,
+  `NPK` char(10) COLLATE utf8_unicode_ci NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  PRIMARY KEY (`VersiUbah`),
+  KEY `nilaiperubahan_kodenilai_foreign` (`KodeNilai`),
+  CONSTRAINT `nilaiperubahan_kodenilai_foreign` FOREIGN KEY (`KodeNilai`) REFERENCES `Nilai` (`KodeNilai`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `NilaiPerubahan`
+--
+
+LOCK TABLES `NilaiPerubahan` WRITE;
+/*!40000 ALTER TABLE `NilaiPerubahan` DISABLE KEYS */;
+INSERT INTO `NilaiPerubahan` VALUES (1,'1604A01120161','A','2016-11-15','','0000-00-00',100,95,'001604A011201610AT005','A','A','','6134059','197030','2016-11-14 21:44:22','2016-11-14 21:44:22'),(2,'1604A01120161','A','2016-11-15','','0000-00-00',50,45,'001604A011201610AT005','D','D','','6134111','197030','2016-11-14 21:44:22','2016-11-14 21:44:22'),(3,'1604A01120161','A','2016-11-15','','0000-00-00',80,75,'001604A011201610AT005','AB','AB','','6134115','197030','2016-11-14 21:44:22','2016-11-14 21:44:22'),(4,'1604A01120161','A','2016-11-15','','0000-00-00',75,80,'001604A011201610AT005','AB','AB','','6134115','197030','2016-11-14 21:44:40','2016-11-14 21:44:40'),(5,'1604A01120161','A','2016-11-15','','0000-00-00',45,50,'001604A011201610AT005','D','D','','6134111','197030','2016-11-14 22:55:43','2016-11-14 22:55:43'),(6,'1604A01120161','A','2016-11-15','','0000-00-00',80,85,'001604A011201610AT005','AB','A','','6134115','197030','2016-11-14 22:55:43','2016-11-14 22:55:43'),(7,'1604A01120161','A','2016-11-15','','0000-00-00',95,100,'001604A011201610AT005','A','A','','6134059','197030','2016-11-14 22:55:43','2016-11-14 22:55:43'),(8,'1604A01120161','A','2016-11-16','','0000-00-00',0,20,'001604A011201610AT003','E','E','','6134111','197030','2016-11-16 04:51:41','2016-11-16 04:51:41'),(10,'1604A01120161','A','2016-11-16','','0000-00-00',40,45,'001604A011201610AT002','D','D','','6134004','197030','2016-11-16 05:16:33','2016-11-16 05:16:33'),(11,'1604A01120161','A','2016-11-16','','0000-00-00',85,0,'001604A011201610AA001','A','E','','6134020','197030','2016-11-16 05:17:14','2016-11-16 05:17:14'),(12,'1604A01120161','A','2016-11-16','','0000-00-00',0,85,'001604A011201610AA001','E','A','','6134020','197030','2016-11-16 05:17:37','2016-11-16 05:17:37'),(14,'1604A01120161','A','2016-11-17','','0000-00-00',50,0,'001604A011201610AT005','D','E','','6134111','197030','2016-11-16 20:52:21','2016-11-16 20:52:21'),(15,'1604A01120161','A','2016-11-17','','0000-00-00',0,20,'001604A011201610AT005','E','E','','6134111','197030','2016-11-16 20:54:39','2016-11-16 20:54:39'),(16,'1604A01120161','A','2016-11-17','','0000-00-00',20,0,'001604A011201610AT005','E','E','','6134111','197030','2016-11-16 20:58:56','2016-11-16 20:58:56'),(17,'1604A01120161','A','2016-11-17','','0000-00-00',0,50,'001604A011201610AT005','E','D','','6134111','197030','2016-11-16 20:59:10','2016-11-16 20:59:10'),(18,'1604A01120161','A','2016-11-17','','0000-00-00',50,0,'001604A011201610AT005','D','E','','6134111','197030','2016-11-16 20:59:19','2016-11-16 20:59:19'),(19,'1604A01120161','A','2016-11-17','','0000-00-00',85,0,'001604A011201610AA001','A','E','','6134020','197030','2016-11-16 20:59:42','2016-11-16 20:59:42'),(20,'1604A01120161','A','2016-11-17','','0000-00-00',0,85,'001604A011201610AA001','E','A','','6134020','197030','2016-11-16 21:00:26','2016-11-16 21:00:26'),(21,'1604A01120161','A','2016-11-17','','0000-00-00',45,75,'001604A011201610AT002','D','AB','','6134004','197030','2016-11-16 21:29:30','2016-11-16 21:29:30');
+/*!40000 ALTER TABLE `NilaiPerubahan` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `migrations`
+--
+
+DROP TABLE IF EXISTS `migrations`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `migrations` (
+  `migration` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `batch` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `migrations`
+--
+
+LOCK TABLES `migrations` WRITE;
+/*!40000 ALTER TABLE `migrations` DISABLE KEYS */;
+INSERT INTO `migrations` VALUES ('2016_08_31_045258_create_mahasiswa__ambil__mata__kuliahs_table',1),('2016_08_31_050108_create_jenis__nilais_table',1),('2016_08_31_050213_create_mahasiswa__punya__nilais_table',1),('2016_08_31_050228_create_nilai__perubahans_table',1);
+/*!40000 ALTER TABLE `migrations` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2016-11-19 21:43:30

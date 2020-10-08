@@ -1,0 +1,26 @@
+(Done) 1. Habis Search gbsa sorting
+(Done) 2. Beri warna backgorund di category dan brands
+(Done) 3. Wizard Dan Required Merah (Jika Kosong)
+(Done) 4. Dropship dan daftar tidak perlu handphone
+
+(Done) 5. Foto customer tidak perlu required, daftar dan edit
+(Done) 6. kalau sudah dipakai emailnya, beri message
+(Done) 7. Welcome Nama yang login di kiri atas ?
+(Done) 8. Logout dan setelah beli, session jumlah chart didelete
+(Done) 9. Klik logo gambar ke new arrivals
+(Done) 10. Out of stock untuk stock yang 0, tampil semua
+(Done) 11. stok (out of stock)
+(Done) 12. Product Sale link ke halaman sale
+(Done) 13. new arrival belum ada category sale
+(Done) 14. Promo, sale, out of stock
+(Done) 15. Alertify Shopping Cart 
+
+https://stackoverflow.com/questions/25338456/laravel-union-paginate-at-the-same-time
+
+1 > Select <> 0 order by new arrival
+2 > Select = 0 (Union)
+
+Arial Judul Hitam
+Kecil Times Gold
+Background Peach
+mmckbeauty.com
